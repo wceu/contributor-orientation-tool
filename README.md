@@ -51,8 +51,8 @@ Workflow for adding new features is as follows:
 * Checkout new brancs with name `feature/name-of-the-feature`, usually name of the issue
 * Commit with message `#{issue id} Name of the issue - description`
 * Push to the forked repository
-* Create pull request
-* Checkout to working branch
+* Create pull request to develop branch
+* Checkout to develop branch
 * Fetch upstream [more info](https://help.github.com/en/articles/syncing-a-fork)
 
 ## Licence
