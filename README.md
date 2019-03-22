@@ -20,9 +20,9 @@ This will create a `dist` directory for project. **This directory represents dis
 
 ## Directory Structure
 
-Feel free to modify everything in the `source` directory and keep in mind that `styleguide` and `build` directories are rebuilt with each `gulp build` command.
+Plese keep in mind that `dist` directory is rebuilt with each `npm dev`, `npm watch` or `npm prod` command.
 
-		dist/ [generated via webpack]
+	dist/ [generated via webpack]
 	src/
 	├── languages/ [translation files]
 	├── src/ [images, stylesheets]
