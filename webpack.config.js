@@ -13,14 +13,14 @@ module.exports = (env, argv) => {
 
   let config = {
     entry: {
-      app: [
-        './src/src/WCEUCDTool/assets/js/main.js',
-        './src/src/WCEUCDTool/assets/scss/style.scss',
+      shortcode: [
+        './src/src/WPCOTool/assets/js/main.js',
+        './src/src/WPCOTool/assets/scss/style.scss',
       ],
     },
     output : {
       path: path.resolve(__dirname, './dist/contributor-orientation-tool'),
-      filename: 'src/WCEUCDTool/assets/js/[name].js',
+      filename: 'src/WPCOTool/assets/js/[name].js',
     },
     module: {
       rules: [
@@ -61,12 +61,12 @@ module.exports = (env, argv) => {
     plugins: [
       new CleanWebpackPlugin(),
       new StyleLintPlugin({
-        files: './src/src/WCEUCDTool/assets/scss/**/*.scss',
+        files: './src/src/WPCOTool/assets/scss/**/*.scss',
         configFile: './.stylelintrc',
       }),
       new MiniCssExtractPlugin({
         fallback: 'style-loader',
-        filename: 'src/WCEUCDTool/assets/css/[name].css',
+        filename: 'src/WPCOTool/assets/css/[name].css',
       }),
       new CopyPlugin([
         {

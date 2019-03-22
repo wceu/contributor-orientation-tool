@@ -8,12 +8,12 @@
  * @author     Aleksandar Predic
  */
 
-namespace WCEUCDTool;
+namespace WPCOTool;
 
 /**
  * Class Autoloader
  *
- * @package WCEUCDTool
+ * @package WPCOTool
  */
 class Autoloader {
 
@@ -27,7 +27,7 @@ class Autoloader {
 	function autoload( $class_name ) {
 
 		// Check our namespace and prevent other classes from autoload
-		if ( 0 !== strpos( $class_name, 'WCEUCDTool' ) ) {
+		if ( 0 !== strpos( $class_name, 'WPCOTool' ) ) {
 			return;
 		}
 

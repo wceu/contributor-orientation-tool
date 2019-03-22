@@ -8,12 +8,14 @@
  * @author     Aleksandar Predic
  */
 
-namespace WCEUCDTool;
+namespace WPCOTool;
+
+use WPCOTool\Frontend\Shortcode;
 
 /**
  * Class Plugin
  *
- * @package WCEUCDTool
+ * @package WPCOTool
  */
 class Plugin {
 
@@ -61,7 +63,7 @@ class Plugin {
 	 *
 	 * @param string $file
 	 */
-	public function __construct( $file ) {
+	public function __construct( string $file ) {
 		$this->loaded      = false;
 		$this->plugin_path = plugin_dir_path( $file );
 		$this->plugin_url  = plugin_dir_url( $file );
@@ -90,15 +92,19 @@ class Plugin {
 			return;
 		}
 
-		/**
-		 * Plugin scripts and styles
-		 */
-		add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 1010 );
-
 		/*
 		 * Add actions sorted via components we are adding trought plugin
 		 * All hooks are going to be added via class __construct method to make plugin modular
 		 */
+
+		if ( ! is_admin() ) {
+
+			/**
+			 * Add shortcode
+			 */
+			new Shortcode( $this->version );
+
+		}
 
 
 		// Set all as loaded.
@@ -107,33 +113,23 @@ class Plugin {
 	}
 
 	/**
-	 * Scripts and styles with very late priority.
-	 *
-	 * @access public
-	 * @since 0.0.1
-	 */
-	public function scripts() {
-
-		// Enque Styles.
-		wp_enqueue_style( 'contributor-orientation-tool-main', plugins_url( 'assets/css/main/style.min.css', __FILE__ ), array(), $this->version );
-
-	}
-
-	/**
-	 * Return scripts url for the plugin.
+	 * Return asset url for the plugin.
 	 *
 	 * @access public
 	 * @since 0.0.1
 	 *
-	 * @param string $filename
+	 * @param string $file File relative to assets dir
 	 *
 	 * @return string
 	 */
-	public static function scripts_url( $filename ) {
+	public static function assets_url( $file ) {
 
-		$is_min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : 'min.';
-
-		return plugins_url( 'assets/js/' . $filename . '.' . $is_min . 'js', __FILE__ );
+		return plugins_url(
+			sprintf( 'assets/%s',
+				sanitize_text_field( $file )
+			),
+			__FILE__
+		);
 
 	}
 
