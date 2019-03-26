@@ -1,0 +1,24 @@
+#wcpot {
+	.wcpot__description {
+		font-size: 0.8rem;
+		line-height: 1.1;
+	}
+
+	form {
+		section {
+			border: 1px solid grey;
+			padding: 1.5rem;
+
+			> div label {
+				margin-left: 5px;
+				cursor: pointer;
+			}
+
+			&:last-of-type {
+				button {
+					display: none;
+				}
+			}
+		}
+	}
+}

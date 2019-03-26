@@ -134,6 +134,18 @@ class Plugin {
 	}
 
 	/**
+	 * Return configuration array used for form logic
+	 * @param static $file Filename
+	 *
+	 * @return array
+	 */
+	public static function get_form_config( $file ) {
+
+		return require_once plugin_dir_path( __FILE__ ) . sprintf( 'config/%s', $file );
+
+	}
+
+	/**
 	 * Fired during plugin activation.
 	 *
 	 * @access public

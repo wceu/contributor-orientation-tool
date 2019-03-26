@@ -27,6 +27,12 @@ class Shortcode {
 	private $shortcode_tag = 'contributor-orientation-tool';
 
 	/**
+	 * Prefix used for output to create ids, field names...
+	 * @var string
+	 */
+	private $form_prefix = 'wcpot';
+
+	/**
 	 * Shortcode constructor.
 	 *
 	 * @param string $version Plugin version
@@ -48,7 +54,103 @@ class Shortcode {
 	 */
 	public function output( $atts, $content = '' ) {
 
-		return 'Just some string';
+		$selected_teams = Plugin::get_form_config( 'teams.php' );
+
+		/**
+		 * TODO: Make better logic for unsetting teams
+		 */
+		/*unset($selected_teams['support']);
+		unset($selected_teams['community']);
+		unset($selected_teams['core']);
+		unset($selected_teams['meta']);
+		unset($selected_teams['design']);
+		unset($selected_teams['mobile']);
+		unset($selected_teams['documentation']);
+		unset($selected_teams['themes']);
+		unset($selected_teams['plugins']);
+		unset($selected_teams['accessibility']);
+		unset($selected_teams['tide']);*/
+
+		/**
+		 * TODO: Split all this in methods after prototype is approved
+		 */
+		$form_sections = array(
+			sprintf( '%s-section-1', $this->form_prefix ) => Plugin::get_form_config( 'section-1.php' ),
+			sprintf( '%s-section-2', $this->form_prefix ) => Plugin::get_form_config( 'section-2.php' ),
+			sprintf( '%s-section-3', $this->form_prefix ) => Plugin::get_form_config( 'section-3.php' )
+		);
+
+		$sections = array();
+		foreach ( $form_sections as $section_id => $section ) {
+
+			$fields = array();
+			foreach ( $section['questions'] as $key => $field ) {
+
+				if ( ! isset( $field['name'] ) || ! isset( $field['label'] ) || ! $field['teams'] ) {
+					continue;
+				}
+
+				$question = QuestionFactory::create( $field['name'], $field['label'], $field['teams'] );
+				$teams = $question->get_teams();
+
+				/**
+				 * Compare if question is referring to one of selected teams and get only enabled teams
+				 */
+				$enabled_teams = array_filter( $teams, function ( $team ) use ( $selected_teams ) {
+					return in_array( $team, array_keys( $selected_teams ) );
+				} );
+
+				if ( empty( $enabled_teams ) ) {
+					continue;
+				}
+
+				$fields[] = sprintf(
+					'<div><input id="%1$s" type="checkbox" name="%3$s[]" value="%4$s" /><label for="%1$s">%2$s</label></div>',
+					esc_attr( sprintf( '%s-%s', $section_id, $key ) ),
+					esc_html( $question->get_label() ),
+					sanitize_text_field( str_replace( '-', '_', $section_id ) ),
+					esc_js( implode( ',', $enabled_teams ) )
+				);
+
+
+			}
+
+			$sections[] = sprintf(
+				'<section id="%1$s"><h3>%2$s</h3>%3$s<button type="button">%4$s</button></section>',
+				esc_attr( $section_id ),
+				esc_html( $section['headline'] ),
+				implode( '', $fields ),
+				esc_html__( 'Next section', 'contributor-orientation-tool' )
+			);
+
+		}
+
+		return sprintf(
+			'<div id="%1$s"><h2>%2$s</h2>%3$s<form method="post" action="">%4$s<button type="submit">%5$s</button></form></div>',
+			esc_attr( $this->form_prefix ),
+			esc_html__( 'Contributor orientation tool', 'contributor-orientation-tool' ),
+			$this->get_form_description(),
+			implode( '', $sections ),
+			esc_html__( 'Submit', 'contributor-orientation-tool' )
+		);
+
+	}
+
+	/**
+	 * Return form description html
+	 * @return string
+	 */
+	private function get_form_description() {
+
+		return sprintf(
+			'<div class="%1$s"><p>%2$s</p><p>%3$s</p><p>%4$s</p><p>%5$s</p><p>%6$s</p></div>',
+			esc_attr( sprintf( '%s__description', $this->form_prefix ) ),
+			esc_html__( 'Hello,', 'contributor-orientation-tool' ),
+			esc_html__( 'Thank you for your interest in contributing to WordPress project. ', 'contributor-orientation-tool' ),
+			esc_html__( 'Even though this tool is created by WordCamp Europe organising team, it is meant to help you decide in less than 1 minute which team to join at any WordCamp Contributor Day in order to start contributing. As a matter of fact, you don’t even have to use it specifically for Contributor Day. ', 'contributor-orientation-tool' ),
+			esc_html__( 'We are not collecting nor storing any data from this form. It is completely anonymous and purely informative nature. This means that you can use it any time and as many times you want. Only you will know your results and these results are, by no means, obligatory for you to join recommended teams.', 'contributor-orientation-tool' ),
+			esc_html__( 'Please note that this survey will not register you for any Contributor Day. You still need to do that if you want to attend Contributor Day. For more info on that please visit the website for WordCamp you are planning to attend and/or contact its organizers.', 'contributor-orientation-tool' )
+		);
 
 	}
 
