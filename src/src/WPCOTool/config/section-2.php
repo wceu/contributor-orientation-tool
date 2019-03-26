@@ -6,7 +6,6 @@ return array(
 	'headline' => esc_html__( 'What Are You Passionate About?', 'contributor-orientation-tool' ),
 	'questions' => array(
 		array(
-			'name' => 'development', // Form field name attribute
 			'label' => esc_html__( 'Web development, Backend development, etc...', 'contributor-orientation-tool' ), // Form field label
 			'teams' => array(
 				'support',
@@ -18,7 +17,6 @@ return array(
 			) // Form field value
 		),
 		array(
-			'name' => 'meta',
 			'label' => esc_html__( 'Writing tests, Support codebase for WordPress.org.', 'contributor-orientation-tool' ),
 			'teams' => array(
 				'meta',
@@ -26,7 +24,6 @@ return array(
 			)
 		),
 		array(
-			'name' => 'support',
 			'label' => esc_html__( 'Helping others.', 'contributor-orientation-tool' ),
 			'teams' => array(
 				'support',
@@ -34,14 +31,12 @@ return array(
 			)
 		),
 		array(
-			'name' => 'mobile',
 			'label' => esc_html__( 'Mobile apps design or development.', 'contributor-orientation-tool' ),
 			'teams' => array(
 				'mobile',
 			)
 		),
 		array(
-			'name' => 'documentation',
 			'label' => esc_html__( 'Documentation.', 'contributor-orientation-tool' ),
 			'teams' => array(
 				'core',
@@ -50,7 +45,6 @@ return array(
 			)
 		),
 		array(
-			'name' => 'testing',
 			'label' => esc_html__( 'Testing.', 'contributor-orientation-tool' ),
 			'teams' => array(
 				'core',
@@ -59,14 +53,12 @@ return array(
 			)
 		),
 		array(
-			'name' => 'design',
 			'label' => esc_html__( 'Web design.', 'contributor-orientation-tool' ),
 			'teams' => array(
 				'design',
 			)
 		),
 		array(
-			'name' => 'content',
 			'label' => esc_html__( 'Content creation.', 'contributor-orientation-tool' ),
 			'teams' => array(
 				'support',
@@ -77,21 +69,18 @@ return array(
 			)
 		),
 		array(
-			'name' => 'marketing',
 			'label' => esc_html__( 'Marketing.', 'contributor-orientation-tool' ),
 			'teams' => array(
 				'marketing',
 			)
 		),
 		array(
-			'name' => 'community',
 			'label' => esc_html__( 'Organizing a meetup or helping community.', 'contributor-orientation-tool' ),
 			'teams' => array(
 				'community',
 			)
 		),
 		array(
-			'name' => 'polyglots',
 			'label' => esc_html__( 'Translation.', 'contributor-orientation-tool' ),
 			'teams' => array(
 				'polyglots',

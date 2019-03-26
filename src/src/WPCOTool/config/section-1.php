@@ -6,7 +6,6 @@ return array(
 	'headline' => esc_html__( 'What do you do with WordPress', 'contributor-orientation-tool' ),
 	'questions' => array(
 		array(
-			'name' => 'developer', // Form field name attribute
 			'label' => esc_html__( 'I\'m developer', 'contributor-orientation-tool' ), // Form field label
 			'teams' => array(
 				'support',
@@ -22,7 +21,6 @@ return array(
 			) // Form field value
 		),
 		array(
-			'name' => 'designer',
 			'label' => esc_html__( 'I\'m designer', 'contributor-orientation-tool' ),
 			'teams' => array(
 				'support',
@@ -33,7 +31,6 @@ return array(
 			)
 		),
 		array(
-			'name' => 'content',
 			'label' => esc_html__( 'I\'m content creator, blogger or marketeer', 'contributor-orientation-tool' ),
 			'teams' => array(
 				'support',
@@ -46,7 +43,6 @@ return array(
 			)
 		),
 		array(
-			'name' => 'user',
 			'label' => esc_html__( 'I\'m WordPress user  / other', 'contributor-orientation-tool' ),
 			'teams' => array(
 				'support',

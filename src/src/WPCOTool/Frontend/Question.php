@@ -29,25 +29,13 @@ class Question {
 	/**
 	 * Question constructor.
 	 *
-	 * @param string $name Form field name attribute
 	 * @param string $label Question label displayed to the user in the form
 	 * @param array $teams List of teams related to this label
 	 */
-	public function __construct( string $name, string $label, array $teams ) {
+	public function __construct( string $label, array $teams ) {
 
-		$this->name = $name;
 		$this->label = $label;
 		$this->teams = $teams;
-
-	}
-
-	/**
-	 * Return form field name attribute
-	 * @return string
-	 */
-	public function get_name() {
-
-		return $this->name;
 
 	}
 

@@ -86,11 +86,11 @@ class Shortcode {
 			$fields = array();
 			foreach ( $section['questions'] as $key => $field ) {
 
-				if ( ! isset( $field['name'] ) || ! isset( $field['label'] ) || ! $field['teams'] ) {
+				if ( ! isset( $field['label'] ) || ! $field['teams'] ) {
 					continue;
 				}
 
-				$question = QuestionFactory::create( $field['name'], $field['label'], $field['teams'] );
+				$question = QuestionFactory::create( $field['label'], $field['teams'] );
 				$teams = $question->get_teams();
 
 				/**
