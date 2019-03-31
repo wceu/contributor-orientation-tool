@@ -1,13 +1,34 @@
-#wcpot {
-	.wcpot__description {
+#wpcot {
+	position: relative;
+	overflow: hidden;
+
+	.wpcot__description {
 		font-size: 0.8rem;
 		line-height: 1.1;
 	}
 
 	form {
+		position: relative;
+
+		.wpcot__questions {
+			display: flex;
+			justify-content: flex-start;
+			align-items: flex-start;
+		}
+
 		section {
 			border: 1px solid grey;
-			padding: 1.5rem;
+			//padding: 1.5rem;
+			width: 0;
+			opacity: 0;
+			visibility: hidden;
+			overflow: hidden;
+
+			&.wpcot__section--active {
+				width: 100%;
+				visibility: visible;
+				opacity: 1;
+			}
 
 			> div label {
 				margin-left: 5px;
@@ -19,6 +40,10 @@
 					display: none;
 				}
 			}
+		}
+
+		button[type="submit"] {
+			flex: none;
 		}
 	}
 }
