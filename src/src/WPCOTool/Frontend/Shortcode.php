@@ -126,7 +126,7 @@ class Shortcode {
                 esc_html( $section['headline'] ),
                 implode( '', $fields ),
                 esc_html__( 'Next section', 'contributor-orientation-tool' ),
-                sprintf( ' %s__section', $this->form_prefix ),
+                sprintf( '%s__section', $this->form_prefix ),
                 $section_1_key === $section_id ? sprintf( ' %s__section--active', $this->form_prefix ) : ''
             );
 
@@ -192,6 +192,14 @@ class Shortcode {
 			$this->version,
 			true
 		);
+
+		/*wp_localize_script(
+			$handle,
+			sprintf( '%sData', $this->form_prefix ),
+			array(
+
+			)
+		)*/
 
 	}
 

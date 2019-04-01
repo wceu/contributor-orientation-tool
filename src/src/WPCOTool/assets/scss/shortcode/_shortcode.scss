@@ -9,26 +9,22 @@
 
 	form {
 		position: relative;
+		width: $form-section__width;
+		overflow: hidden;
 
 		.wpcot__questions {
 			display: flex;
 			justify-content: flex-start;
 			align-items: flex-start;
+			width: calc(#{$form-section__width} * 3);
+			transition: transform 0.25s ease-in-out;
 		}
 
 		section {
 			border: 1px solid grey;
-			//padding: 1.5rem;
-			width: 0;
-			opacity: 0;
-			visibility: hidden;
-			overflow: hidden;
-
-			&.wpcot__section--active {
-				width: 100%;
-				visibility: visible;
-				opacity: 1;
-			}
+			padding: 1.5rem;
+			width: $form-section__width;
+			height: $form-section__height;
 
 			> div label {
 				margin-left: 5px;

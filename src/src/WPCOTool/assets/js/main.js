@@ -6,7 +6,7 @@ import Form from './form';
 
 	$(window).load(function () {
 
-		new Form($('#wcpot form'));
+		new Form($('#wpcot form'));
 
 	});
 

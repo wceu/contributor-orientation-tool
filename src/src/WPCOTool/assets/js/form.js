@@ -18,8 +18,11 @@ export default class Form {
 
 		let button = jQuery(event.currentTarget);
 		let section = button.parent('section');
+		let sectionWidth = section.outerWidth();
 		let nextSection = section.next('section');
+		let allSectionsWrapper = section.parent('.wpcot__questions');
 		let fields = section.find('input[type="checkbox"]:checked');
+
 
 		//console.log(button);
 		let teams = new Set();
@@ -71,6 +74,17 @@ export default class Form {
 
 		}
 
+		let move = (nextSection.index()) * sectionWidth;
+
+		console.log(`translate(-${move}px, 0);`);
+		allSectionsWrapper.css({
+			'-webkit-transform': `translate(-${move}px, 0)`,
+			'-moz-transform': `translate(-${move}px, 0)`,
+			'-ms-transform': `translate(-${move}px, 0)`,
+			'-o-transform': `translate(-${move}px, 0)`,
+			'transform': `translate(-${move}px, 0)`,
+			'opacity': 0.5,
+		});
 
 	}
 
