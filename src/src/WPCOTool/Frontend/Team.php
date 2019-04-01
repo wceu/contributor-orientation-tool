@@ -22,7 +22,7 @@ class Team {
 	 */
 	private $name;
 
-	public function __construct( $id, $name ) {
+	public function __construct( string $id, string $name ) {
 
 		$this->id = sanitize_text_field( $id );
 		$this->name = sanitize_text_field( $name );
