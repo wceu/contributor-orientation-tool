@@ -33,6 +33,12 @@ class Shortcode {
 	private $form_prefix = 'wpcot';
 
 	/**
+	 * Active section css class
+	 * @var string
+	 */
+	private $active_section_class;
+
+	/**
 	 * Shortcode constructor.
 	 *
 	 * @param string $version Plugin version
@@ -40,6 +46,7 @@ class Shortcode {
 	public function __construct( string $version ) {
 
 		$this->version = sanitize_text_field( $version );
+		$this->active_section_class = sprintf( ' %s__section--active', $this->form_prefix );
 		add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ) );
 		add_shortcode( $this->shortcode_tag, array( $this, 'output' ) );
 
@@ -56,10 +63,19 @@ class Shortcode {
 
 		$selected_teams = Plugin::get_form_config( 'teams.php' );
 
+		/**
+		 * TODO: Validate if at least one team selected when options are built
+		 */
+
         /**
          * Multipart form sections
          */
 		$sections = $this->get_questions_sections( $selected_teams );
+
+		/**
+		 * Add teams section as final results
+		 */
+		$sections[] = $this->get_teams_section( $selected_teams );
 
         /**
          * Output
@@ -75,6 +91,46 @@ class Shortcode {
 
 	}
 
+	/**
+	 * Return section with teams
+	 * @param array $selected_teams Array of enabled teams
+	 *
+	 * @return string Return section html
+	 */
+	private function get_teams_section( $selected_teams ) {
+
+		$fields = array();
+		foreach ( $selected_teams as $id => $name ) {
+
+			$team = new Team( $id, $name );
+			$team_id = $team->get_id();
+
+			$fields[] = $this->get_checkbox_field(
+				$team->get_name(),
+				sprintf( '%s__teams', $this->form_prefix ),
+				$team_id,
+				$team_id
+			);
+
+		}
+
+		return $this->get_section(
+			sprintf( '%s-section-teams', $this->form_prefix ),
+			esc_html__( 'Based on your answers, we recommend that you join some of teams below!', 'contributor-orientation-tool' ),
+			implode( '', $fields ),
+			'',
+			$this->get_button( esc_html__( 'Previous section', 'contributor-orientation-tool' ), true ),
+			''
+		);
+
+	}
+
+	/**
+	 * Return sections with questions
+	 * @param array $selected_teams Array of enabled teams
+	 *
+	 * @return array Return array of sections html
+	 */
 	private function get_questions_sections( $selected_teams ) {
 
 	    $section_1_key = sprintf( '%s-section-1', $this->form_prefix );
@@ -109,30 +165,92 @@ class Shortcode {
                     continue;
                 }
 
-                $fields[] = sprintf(
-                    '<div><input id="%1$s" type="checkbox" name="%3$s[]" value="%4$s" /><label for="%1$s">%2$s</label></div>',
-                    esc_attr( sprintf( '%s-%s', $section_id, $key ) ),
-                    esc_html( $question->get_label() ),
-                    sanitize_text_field( str_replace( '-', '_', $section_id ) ),
-                    esc_js( implode( ',', $enabled_teams ) )
+                $fields[] = $this->get_checkbox_field(
+	                $question->get_label(),
+	                str_replace( '-', '_', $section_id ),
+	                implode( ',', $enabled_teams ),
+	                sprintf( '%s-%s', $section_id, $key )
                 );
-
 
             }
 
-            $sections[] = sprintf(
-                '<section id="%1$s" class="%5$s%6$s"><h3>%2$s</h3>%3$s<button type="button">%4$s</button></section>',
-                esc_attr( $section_id ),
-                esc_html( $section['headline'] ),
-                implode( '', $fields ),
-                esc_html__( 'Next section', 'contributor-orientation-tool' ),
-                sprintf( '%s__section', $this->form_prefix ),
-                $section_1_key === $section_id ? sprintf( ' %s__section--active', $this->form_prefix ) : ''
+            $sections[] = $this->get_section(
+	            $section_id,
+	            $section['headline'],
+	            implode( '', $fields ),
+	            $this->get_button( esc_html__( 'Next section', 'contributor-orientation-tool' ), false ),
+	            $this->get_button( esc_html__( 'Previous section', 'contributor-orientation-tool' ), true ),
+	            $section_id === $section_1_key ? $this->active_section_class : ''
             );
 
         }
 
         return $sections;
+
+    }
+
+	/**
+	 * Return section html
+	 * @param string $id Section id attribute
+	 * @param string $headline Section headline
+	 * @param string $content Section content
+	 * @param string $button_next Button html
+	 * @param string $button_prev Button html
+	 * @param bool $active_class If section should have active class
+	 *
+	 * @return string
+	 */
+    private function get_section( $id, $headline, $content, $button_next = '', $button_prev = '', $active_class = false ) {
+
+	    return sprintf(
+		    '<section id="%1$s" class="%6$s%7$s"><h3>%2$s</h3>%3$s<div class="%8$s">%5$s%4$s</div></section>',
+		    esc_attr( $id ), // %1$s
+		    esc_html( $headline ), // %2$s
+		    $content, // %3$s
+		    ! empty( $button_next ) ? wp_kses_post( $button_next ) : '', // %4$s
+		    ! empty( $button_prev ) ? wp_kses_post( $button_prev ) : '', // %5$s
+		    sprintf( '%s__section', $this->form_prefix ), // %6$s
+		    $active_class, // %7$s
+		    sprintf( '%s__buttons', $this->form_prefix ) // %8$s
+	    );
+
+    }
+
+	/**
+	 * Return button html
+	 * @param string $text Button text
+	 * @param bool $prev If it is previous or next button
+	 *
+	 * @return string
+	 */
+    private function get_button( $text, $prev = false ) {
+
+		return sprintf(
+		'<button class="%1$s" type="button">%2$s</button>',
+		$prev ? esc_attr( sprintf( '%s__button-prev', $this->form_prefix ) ) : esc_attr( sprintf( '%s__button-next', $this->form_prefix ) ),
+			esc_html( $text )
+		);
+
+    }
+
+	/**
+	 * Return checkbox html
+	 * @param string $label Label
+	 * @param string $name Input name
+	 * @param string $value Input value
+	 * @param string $id Input id
+	 *
+	 * @return string
+	 */
+    private function get_checkbox_field( $label, $name, $value, $id = '' ) {
+
+		return sprintf(
+			'<div><input id="%1$s" type="checkbox" name="%3$s[]" value="%4$s" /><label for="%1$s">%2$s</label></div>',
+			esc_attr( $id ), // %1$s
+			esc_html( $label ), // %2$s
+			sanitize_text_field( $name ), // %3$s
+			esc_js( $value ) // %4$s
+		);
 
     }
 
@@ -192,14 +310,6 @@ class Shortcode {
 			$this->version,
 			true
 		);
-
-		/*wp_localize_script(
-			$handle,
-			sprintf( '%sData', $this->form_prefix ),
-			array(
-
-			)
-		)*/
 
 	}
 
