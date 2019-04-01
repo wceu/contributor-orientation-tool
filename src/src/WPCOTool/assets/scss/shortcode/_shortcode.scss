@@ -39,6 +39,10 @@
 				cursor: pointer;
 			}
 
+			.wpcot__section-error {
+				color: $color__main-dark;
+			}
+
 			.wpcot__buttons {
 				display: flex;
 				justify-content: flex-end;

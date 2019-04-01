@@ -203,7 +203,7 @@ class Shortcode {
     private function get_section( $id, $headline, $content, $button_next = '', $button_prev = '', $active_class = false ) {
 
 	    return sprintf(
-		    '<section id="%1$s" class="%6$s%7$s"><h3>%2$s</h3>%3$s<div class="%8$s">%5$s%4$s</div></section>',
+		    '<section id="%1$s" class="%6$s%7$s"><h3>%2$s</h3>%3$s<div class="%9$s"></div><div class="%8$s">%5$s%4$s</div></section>',
 		    esc_attr( $id ), // %1$s
 		    esc_html( $headline ), // %2$s
 		    $content, // %3$s
@@ -211,7 +211,8 @@ class Shortcode {
 		    ! empty( $button_prev ) ? wp_kses_post( $button_prev ) : '', // %5$s
 		    sprintf( '%s__section', $this->form_prefix ), // %6$s
 		    $active_class, // %7$s
-		    sprintf( '%s__buttons', $this->form_prefix ) // %8$s
+		    sprintf( '%s__buttons', $this->form_prefix ), // %8$s
+		    sprintf( '%s__section-error', $this->form_prefix ) // %9$s
 	    );
 
     }
@@ -311,6 +312,13 @@ class Shortcode {
 			true
 		);
 
+		wp_localize_script(
+			$handle,
+			sprintf( '%sData', $this->form_prefix ),
+			array(
+				'errorMessage' => esc_html__( 'Please select at least one answer!', 'contributor-orientation-tool' )
+			)
+		);
 	}
 
 }

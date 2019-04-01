@@ -12,6 +12,9 @@ export default class Form {
 		this.buttonNextClass = 'wpcot__button-next';
 		this.buttonPrevClass = 'wpcot__button-prev';
 
+		/* global wpcotData */
+		this.errorMessage = wpcotData.errorMessage;
+
 		this.form.find(`section .${this.buttonNextClass}`).on('click', (event) => this.next(event));
 		this.form.find(`section .${this.buttonPrevClass}`).on('click', (event) => this.prev(event));
 	}
@@ -62,6 +65,7 @@ export default class Form {
 		let sectionWidth = section.outerWidth();
 		let nextSection = section.next('section');
 		let fields = section.find('input[type="checkbox"]:checked');
+		let errorDiv = section.find('.wpcot__section-error');
 		let teams = new Set();
 
 		/**
@@ -76,13 +80,22 @@ export default class Form {
 
 		}
 
+		/**
+		 * Alert to select form inputs
+		 */
 		if ( teams.size <= 0 ) {
+			errorDiv.text(this.errorMessage);
 			return false;
 		}
 
+		/**
+		 * If we have next section
+		 */
 		if (nextSection.length < 1) {
 			return false;
 		}
+
+		errorDiv.text('');
 
 		/**
 		 * Filter next section fields
