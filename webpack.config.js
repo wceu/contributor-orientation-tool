@@ -5,6 +5,7 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin');
+const Autoprefixer = require('autoprefixer');
 
 // Get mode - https://webpack.js.org/concepts/mode/
 module.exports = (env, argv) => {
@@ -34,7 +35,14 @@ module.exports = (env, argv) => {
               loader: "css-loader", options: {
                 sourceMap: true,
               },
-            }, {
+            },
+            {
+                loader: 'postcss-loader',
+                options: {
+                    plugins: () => [Autoprefixer()]
+                }
+            },
+            {
               loader: "sass-loader", options: {
                 sourceMap: true,
               },
@@ -74,7 +82,7 @@ module.exports = (env, argv) => {
           to: '../contributor-orientation-tool',
           ignore: ['*.js', '*.scss', '*.png', '*.jpe?g', '*.JPE?G', '*.gif', '*.svg'],
         },
-      ]),
+      ])
     ],
     devtool: "source-map",
   };

@@ -35,7 +35,7 @@ class Plugin {
 	 * @access   public
 	 * @var string
 	 */
-	public $version = '0.0.1';
+	public $version = '0.1.0';
 
 	/**
 	 * Absolute path to the directory where WordPress installed the plugin with the trailing slash
@@ -130,6 +130,18 @@ class Plugin {
 			),
 			__FILE__
 		);
+
+	}
+
+	/**
+	 * Return configuration array used for form logic
+	 * @param static $file Filename
+	 *
+	 * @return array
+	 */
+	public static function get_form_config( $file ) {
+
+		return require_once plugin_dir_path( __FILE__ ) . sprintf( 'config/%s', $file );
 
 	}
 
