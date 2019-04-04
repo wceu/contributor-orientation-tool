@@ -1,0 +1,82 @@
+#wpcot {
+	position: relative;
+	overflow: hidden;
+
+	.wpcot__description {
+		font-size: 0.8rem;
+		line-height: 1.1;
+	}
+
+	form {
+		position: relative;
+		width: $form-section__width;
+		overflow: hidden;
+		border: 1px solid $box-shadow__main;
+
+		.wpcot__questions {
+			display: flex;
+			justify-content: flex-start;
+			align-items: flex-start;
+			width: calc(#{$form-section__width} * 4);
+			transition: transform 0.25s ease-in-out;
+		}
+
+		section {
+			padding: 1.5rem;
+			width: $form-section__width;
+			height: $form-section__height;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: flex-start;
+
+			> h3 {
+				margin-bottom: 30px;
+			}
+
+			> div label {
+				margin-left: 5px;
+				cursor: pointer;
+			}
+
+			.wpcot__section-error {
+				color: $color__main-dark;
+			}
+
+			.wpcot__buttons {
+				display: flex;
+				justify-content: flex-end;
+				align-items: center;
+				margin-top: auto;
+				width: 100%;
+
+				.wpcot__button-prev {
+					margin-right: auto;
+				}
+			}
+
+			&:first-of-type {
+				.wpcot__button-prev {
+					display: none;
+				}
+			}
+
+			&:last-of-type {
+				.wpcot__button-next {
+					display: none;
+				}
+			}
+
+			&#wpcot-section-teams {
+				input[type="checkbox"] {
+					display: none;
+				}
+			}
+		}
+
+		button[type="submit"] {
+			flex: none;
+			display: none;
+		}
+	}
+}
