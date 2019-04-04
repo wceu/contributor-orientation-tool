@@ -3,7 +3,7 @@
  * Shortcode form section 3 config array
  */
 return array(
-	'headline' => esc_html__( 'Are these areas you have experience with or are eager to try?', 'contributor-orientation-tool' ),
+	'headline'  => esc_html__( 'Are these areas you have experience with or are eager to try?', 'contributor-orientation-tool' ),
 	'questions' => array(
 		array(
 			'label' => esc_html__( 'Q&A, helping others use programmes, support', 'contributor-orientation-tool' ), // Form field label

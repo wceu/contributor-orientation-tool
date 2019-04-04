@@ -3,7 +3,7 @@
  * Shortcode form section 2 config array
  */
 return array(
-	'headline' => esc_html__( 'What are you passionate about?', 'contributor-orientation-tool' ),
+	'headline'  => esc_html__( 'What are you passionate about?', 'contributor-orientation-tool' ),
 	'questions' => array(
 		array(
 			'label' => esc_html__( 'Web development, backend development etc.', 'contributor-orientation-tool' ), // Form field label

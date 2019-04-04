@@ -3,7 +3,7 @@
  * Shortcode form section 1 config array
  */
 return array(
-	'headline' => esc_html__( 'What do you do with WordPress?', 'contributor-orientation-tool' ),
+	'headline'  => esc_html__( 'What do you do with WordPress?', 'contributor-orientation-tool' ),
 	'questions' => array(
 		array(
 			'label' => esc_html__( 'I\'m a developer', 'contributor-orientation-tool' ), // Form field label
