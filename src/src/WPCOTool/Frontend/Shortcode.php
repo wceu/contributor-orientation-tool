@@ -262,13 +262,14 @@ class Shortcode {
 	private function get_form_description() {
 
 		return sprintf(
-			'<div class="%1$s"><p>%2$s</p><p>%3$s</p><p>%4$s</p><p>%5$s</p><p>%6$s</p></div>',
+			'<div class="%1$s"><p>%2$s</p><p>%3$s</p><p>%4$s</p><p>%5$s</p><p>%6$s</p><p>%7$s</p></div>',
 			esc_attr( sprintf( '%s__description', $this->form_prefix ) ),
 			esc_html__( 'Hello,', 'contributor-orientation-tool' ),
-			esc_html__( 'Thank you for your interest in contributing to WordPress project. ', 'contributor-orientation-tool' ),
-			esc_html__( 'Even though this tool is created by WordCamp Europe organising team, it is meant to help you decide in less than 1 minute which team to join at any WordCamp Contributor Day in order to start contributing. As a matter of fact, you don’t even have to use it specifically for Contributor Day. ', 'contributor-orientation-tool' ),
-			esc_html__( 'We are not collecting nor storing any data from this form. It is completely anonymous and purely informative nature. This means that you can use it any time and as many times you want. Only you will know your results and these results are, by no means, obligatory for you to join recommended teams.', 'contributor-orientation-tool' ),
-			esc_html__( 'Please note that this survey will not register you for any Contributor Day. You still need to do that if you want to attend Contributor Day. For more info on that please visit the website for WordCamp you are planning to attend and/or contact its organizers.', 'contributor-orientation-tool' )
+			esc_html__( 'Thank you for your interest in contributing to WordPress. ', 'contributor-orientation-tool' ),
+			esc_html__( 'This tool was created by the WordCamp Europe Organising Team and it can help you decide which team to join at any WordCamp Contributor Day in less than 1 minute.', 'contributor-orientation-tool' ),
+			esc_html__( 'In fact, you can use this orientation tool to help you choose how to contribute to WordPress, it doesn’t even need to relate to at specific Contributor Day.', 'contributor-orientation-tool' ),
+			esc_html__( 'We do not collect or store any data from this form. It is completely anonymous and purely informative. This means that you can use it any time and as many times you want. Only you will know your results and these results are, by no means, obligatory for you to join the recommended teams.', 'contributor-orientation-tool' ),
+			esc_html__( 'Please note that this survey will not register you for any Contributor Day. You need to register separately  to attend Contributor Day. For more information, please visit the WordCamp site you are planning to attend and/or contact its Organisers.', 'contributor-orientation-tool' )
 		);
 
 	}
