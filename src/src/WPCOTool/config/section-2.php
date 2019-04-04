@@ -3,10 +3,10 @@
  * Shortcode form section 2 config array
  */
 return array(
-	'headline' => esc_html__( 'What Are You Passionate About?', 'contributor-orientation-tool' ),
+	'headline'  => esc_html__( 'What are you passionate about?', 'contributor-orientation-tool' ),
 	'questions' => array(
 		array(
-			'label' => esc_html__( 'Web development, Backend development, etc...', 'contributor-orientation-tool' ), // Form field label
+			'label' => esc_html__( 'Web development, backend development etc.', 'contributor-orientation-tool' ), // Form field label
 			'teams' => array(
 				'support',
 				'core',
@@ -17,27 +17,27 @@ return array(
 			) // Form field value
 		),
 		array(
-			'label' => esc_html__( 'Writing tests, Support codebase for WordPress.org.', 'contributor-orientation-tool' ),
+			'label' => esc_html__( 'Writing tests, support codebase for WordPress.org', 'contributor-orientation-tool' ),
 			'teams' => array(
 				'meta',
 				'tide',
 			)
 		),
 		array(
-			'label' => esc_html__( 'Helping others.', 'contributor-orientation-tool' ),
+			'label' => esc_html__( 'Helping others', 'contributor-orientation-tool' ),
 			'teams' => array(
 				'support',
 				'training',
 			)
 		),
 		array(
-			'label' => esc_html__( 'Mobile apps design or development.', 'contributor-orientation-tool' ),
+			'label' => esc_html__( 'Mobile apps', 'contributor-orientation-tool' ),
 			'teams' => array(
 				'mobile',
 			)
 		),
 		array(
-			'label' => esc_html__( 'Documentation.', 'contributor-orientation-tool' ),
+			'label' => esc_html__( 'Documentation', 'contributor-orientation-tool' ),
 			'teams' => array(
 				'core',
 				'meta',
@@ -45,7 +45,7 @@ return array(
 			)
 		),
 		array(
-			'label' => esc_html__( 'Testing.', 'contributor-orientation-tool' ),
+			'label' => esc_html__( 'Testing', 'contributor-orientation-tool' ),
 			'teams' => array(
 				'core',
 				'documentation',
@@ -53,13 +53,13 @@ return array(
 			)
 		),
 		array(
-			'label' => esc_html__( 'Web design.', 'contributor-orientation-tool' ),
+			'label' => esc_html__( 'Web design', 'contributor-orientation-tool' ),
 			'teams' => array(
 				'design',
 			)
 		),
 		array(
-			'label' => esc_html__( 'Content creation.', 'contributor-orientation-tool' ),
+			'label' => esc_html__( 'Content creation', 'contributor-orientation-tool' ),
 			'teams' => array(
 				'support',
 				'polyglots',
@@ -69,19 +69,19 @@ return array(
 			)
 		),
 		array(
-			'label' => esc_html__( 'Marketing.', 'contributor-orientation-tool' ),
+			'label' => esc_html__( 'Marketing', 'contributor-orientation-tool' ),
 			'teams' => array(
 				'marketing',
 			)
 		),
 		array(
-			'label' => esc_html__( 'Organizing a meetup or helping community.', 'contributor-orientation-tool' ),
+			'label' => esc_html__( 'Organising a meetup and helping the community', 'contributor-orientation-tool' ),
 			'teams' => array(
 				'community',
 			)
 		),
 		array(
-			'label' => esc_html__( 'Translation.', 'contributor-orientation-tool' ),
+			'label' => esc_html__( 'Translation', 'contributor-orientation-tool' ),
 			'teams' => array(
 				'polyglots',
 			)

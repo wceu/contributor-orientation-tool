@@ -26,8 +26,6 @@ export default class Form {
 	 */
 	prev(event) {
 
-		console.log(event);
-
 		let button = jQuery(event.currentTarget);
 		let section = button.parents('section');
 		let sectionWidth = section.outerWidth();
@@ -167,11 +165,10 @@ export default class Form {
 
 
 		let buttonClass = $next ? this.buttonNextClass : this.buttonPrevClass;
-		console.log(buttonClass);
+
 		let fieldsDisplayed = section.find('input[type="checkbox"]:visible');
 		if ( fieldsDisplayed.length <= 1 && ! section.attr('id').endsWith('teams') ) {
 			fieldsDisplayed.attr('checked', 'checked');
-			console.log(section.find(`.${buttonClass}`));
 			section.find(`.${buttonClass}`).trigger('click');
 			return true;
 		}
