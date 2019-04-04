@@ -62,6 +62,7 @@
 			}
 
 			&:last-of-type {
+				.wpcot__button-prev,
 				.wpcot__button-next {
 					display: none;
 				}

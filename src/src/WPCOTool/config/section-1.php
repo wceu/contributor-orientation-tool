@@ -3,10 +3,10 @@
  * Shortcode form section 1 config array
  */
 return array(
-	'headline' => esc_html__( 'What do you do with WordPress', 'contributor-orientation-tool' ),
+	'headline'  => esc_html__( 'What do you do with WordPress?', 'contributor-orientation-tool' ),
 	'questions' => array(
 		array(
-			'label' => esc_html__( 'I\'m developer', 'contributor-orientation-tool' ), // Form field label
+			'label' => esc_html__( 'I\'m a developer', 'contributor-orientation-tool' ), // Form field label
 			'teams' => array(
 				'support',
 				'community',
@@ -21,7 +21,7 @@ return array(
 			) // Form field value
 		),
 		array(
-			'label' => esc_html__( 'I\'m designer', 'contributor-orientation-tool' ),
+			'label' => esc_html__( 'I\'m a designer', 'contributor-orientation-tool' ),
 			'teams' => array(
 				'support',
 				'community',
@@ -31,7 +31,7 @@ return array(
 			)
 		),
 		array(
-			'label' => esc_html__( 'I\'m content creator, blogger or marketeer', 'contributor-orientation-tool' ),
+			'label' => esc_html__( 'I\'m a content creator, blogger or marketeer', 'contributor-orientation-tool' ),
 			'teams' => array(
 				'support',
 				'community',
@@ -43,7 +43,7 @@ return array(
 			)
 		),
 		array(
-			'label' => esc_html__( 'I\'m WordPress user  / other', 'contributor-orientation-tool' ),
+			'label' => esc_html__( 'I\'m a WordPress user  / other', 'contributor-orientation-tool' ),
 			'teams' => array(
 				'support',
 				'community',
