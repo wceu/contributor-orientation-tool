@@ -10,6 +10,8 @@
 
 namespace WPCOTool;
 
+use WPCOTool\Admin\Options;
+use WPCOTool\Admin\Settings;
 use WPCOTool\Frontend\Shortcode;
 
 /**
@@ -54,6 +56,12 @@ class Plugin {
 	 * @var string
 	 */
 	private $plugin_url;
+
+	/**
+	 * Prefix to use for all we need
+	 * @var string
+	 */
+	private $prefix = 'wpcot';
 
 	/**
 	 * Constructor.
@@ -102,7 +110,22 @@ class Plugin {
 			/**
 			 * Add shortcode
 			 */
-			new Shortcode( $this->version );
+			new Shortcode( $this->version, $this->prefix );
+
+		}
+
+		if ( is_admin() ) {
+
+			/**
+			 * Add submenu page
+			 */
+			new Settings( $this->prefix );
+
+			/**
+			 * Add options
+			 */
+			$admin_page_options = new Options( $this->prefix );
+			$admin_page_options->init_admin_form();
 
 		}
 
