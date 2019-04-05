@@ -139,7 +139,7 @@ class Shortcode {
 
 		return $this->get_section(
 			sprintf( '%s-section-teams', $this->prefix ),
-			esc_html__( 'Based on your answers, we recommend that you join some of teams below!', 'contributor-orientation-tool' ),
+			esc_html__( 'Based on your answers, we recommend that you join some of teams below:', 'contributor-orientation-tool' ),
 			implode( '', $fields ),
 			'',
 			$this->get_button( esc_html__( 'Previous section', 'contributor-orientation-tool' ), true ),
