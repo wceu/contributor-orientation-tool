@@ -9,12 +9,6 @@ namespace WPCOTool\Frontend;
 class Question {
 
 	/**
-	 * Form field name attribute
-	 * @var string
-	 */
-	private $name;
-
-	/**
 	 * Question label displayed to the user in the form
 	 * @var string
 	 */
