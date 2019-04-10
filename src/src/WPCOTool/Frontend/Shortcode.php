@@ -40,6 +40,11 @@ class Shortcode {
 	private $active_section_class;
 
 	/**
+	 * Number of sections including teams
+	 */
+	private $number_of_sections = 4;
+
+	/**
 	 * Shortcode constructor.
 	 *
 	 * @param string $version Plugin version
@@ -70,12 +75,11 @@ class Shortcode {
          * Output
          */
 		return sprintf(
-			'<div id="%1$s"><h2>%2$s</h2>%3$s<form method="post" action=""><div class="wpcot__questions">%4$s</div><button type="submit">%5$s</button></form></div>',
-			esc_attr( $this->prefix ),
-			esc_html__( 'Contributor orientation tool', 'contributor-orientation-tool' ),
-			$this->get_form_description(),
-			implode( '', $this->get_sections( $selected_teams ) ),
-			esc_html__( 'Submit', 'contributor-orientation-tool' )
+			'<div id="%1$s"><form method="post" action="">%4$s<div class="wpcot__questions">%2$s</div><button type="submit">%3$s</button></form></div>',
+			esc_attr( $this->prefix ), // %1$s
+			implode( '', $this->get_sections( $selected_teams ) ), // %2$s
+			esc_html__( 'Submit', 'contributor-orientation-tool' ), // %3$s
+			$this->get_form_header() // %4$s
 		);
 
 	}
@@ -143,7 +147,8 @@ class Shortcode {
 			implode( '', $fields ),
 			'',
 			$this->get_button( esc_html__( 'Previous section', 'contributor-orientation-tool' ), true ),
-			''
+			'',
+			$this->get_form_notice()
 		);
 
 	}
@@ -201,8 +206,8 @@ class Shortcode {
 	            $section_id,
 	            $section['headline'],
 	            implode( '', $fields ),
-	            $this->get_button( esc_html__( 'Next section', 'contributor-orientation-tool' ), false ),
-	            $this->get_button( esc_html__( 'Previous section', 'contributor-orientation-tool' ), true ),
+	            $this->get_button( esc_html__( 'Continue', 'contributor-orientation-tool' ), false ),
+	            $this->get_button( esc_html__( 'Back', 'contributor-orientation-tool' ), true ),
 	            $section_id === $section_1_key ? $this->active_section_class : ''
             );
 
@@ -220,13 +225,22 @@ class Shortcode {
 	 * @param string $button_next Button html
 	 * @param string $button_prev Button html
 	 * @param bool $active_class If section should have active class
+	 * @param string $notice Any text for notice to display in section after headline
 	 *
 	 * @return string
 	 */
-    private function get_section( $id, $headline, $content, $button_next = '', $button_prev = '', $active_class = false ) {
+    private function get_section( $id, $headline, $content, $button_next = '', $button_prev = '', $active_class = false, $notice = '' ) {
 
 	    return sprintf(
-		    '<section id="%1$s" class="%6$s%7$s"><h3>%2$s</h3>%3$s<div class="%9$s"></div><div class="%8$s">%5$s%4$s</div></section>',
+		    '<section id="%1$s" class="%6$s%7$s">
+				<h3>%2$s</h3>
+				%10$s
+				<div class="%11$s">
+					%3$s
+					<div class="%9$s"></div>
+				</div>
+				<div class="%8$s">%5$s%4$s</div>
+			</section>',
 		    esc_attr( $id ), // %1$s
 		    esc_html( $headline ), // %2$s
 		    $content, // %3$s
@@ -235,7 +249,9 @@ class Shortcode {
 		    sprintf( '%s__section', $this->prefix ), // %6$s
 		    $active_class, // %7$s
 		    sprintf( '%s__buttons', $this->prefix ), // %8$s
-		    sprintf( '%s__section-error', $this->prefix ) // %9$s
+		    sprintf( '%s__section-error', $this->prefix ), // %9$s
+	        wp_kses_post( $notice ), // %10$s
+		    sprintf( '%s__choices', $this->prefix ) // %11$s
 	    );
 
     }
@@ -279,20 +295,43 @@ class Shortcode {
     }
 
 	/**
-	 * Return form description html
+	 * Return form header which contain form steps
 	 * @return string
 	 */
-	private function get_form_description() {
+	private function get_form_header() {
+
+		$number = $this->number_of_sections;
+		$steps = array();
+		for( $i = 1; $i <= $number; $i++ ) {
+
+			$steps[] = sprintf(
+				'<li%1$s><span class="%2$s">%3$s</span><span>%4$d</span></li>',
+				$i === 1 ? sprintf( ' class="%s"', sprintf( '%s__steps--active', $this->prefix ) ) : '', // %1$s
+				sprintf( '%s__steps-text', $this->prefix ), // %2$s
+				esc_html__( 'Step', 'contributor-orientation-tool' ), // %3$s
+				$i // %4$d
+			);
+
+		}
 
 		return sprintf(
-			'<div class="%1$s"><p>%2$s</p><p>%3$s</p><p>%4$s</p><p>%5$s</p><p>%6$s</p><p>%7$s</p></div>',
-			esc_attr( sprintf( '%s__description', $this->prefix ) ),
-			esc_html__( 'Hello,', 'contributor-orientation-tool' ),
-			esc_html__( 'Thank you for your interest in contributing to WordPress. ', 'contributor-orientation-tool' ),
-			esc_html__( 'This tool was created by the WordCamp Europe Organising Team and it can help you decide which team to join at any WordCamp Contributor Day in less than 1 minute.', 'contributor-orientation-tool' ),
-			esc_html__( 'In fact, you can use this orientation tool to help you choose how to contribute to WordPress, it doesn’t even need to relate to at specific Contributor Day.', 'contributor-orientation-tool' ),
-			esc_html__( 'We do not collect or store any data from this form. It is completely anonymous and purely informative. This means that you can use it any time and as many times you want. Only you will know your results and these results are, by no means, obligatory for you to join the recommended teams.', 'contributor-orientation-tool' ),
-			esc_html__( 'Please note that this survey will not register you for any Contributor Day. You need to register separately  to attend Contributor Day. For more information, please visit the WordCamp site you are planning to attend and/or contact its Organisers.', 'contributor-orientation-tool' )
+			'<div class="%1$s"><ul>%2$s</ul></div>',
+			sprintf( '%s__steps', $this->prefix ),
+			implode( $steps )
+		);
+
+	}
+
+	/**
+	 * Return form notice html
+	 * @return string
+	 */
+	private function get_form_notice() {
+
+		return sprintf(
+			'<div class="%1$s"><p>%2$s</p></div>',
+			esc_attr( sprintf( '%s__notice', $this->prefix ) ),
+			esc_html__( 'Please note that this is not Contributor Day registering form. This is just an orientation tool and results represent recommendations based on your answers. You still need to register for Contributor Day if you are planning to attend one.', 'contributor-orientation-tool' )
 		);
 
 	}
