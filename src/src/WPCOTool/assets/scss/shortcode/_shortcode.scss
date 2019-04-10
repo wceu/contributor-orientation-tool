@@ -21,6 +21,11 @@
 			transition: transform 0.25s ease-in-out;
 		}
 
+		.wpcot__no-teams-selected {
+			padding: 15px;
+			margin: 0;
+		}
+
 		section {
 			padding: 1.5rem;
 			width: $form-section__width;
