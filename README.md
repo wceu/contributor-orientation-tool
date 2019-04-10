@@ -55,6 +55,8 @@ Workflow for adding new features is as follows:
 * Checkout to develop branch
 * Fetch upstream [more info](https://help.github.com/en/articles/syncing-a-fork)
 
+## Changing plugin version
+
 Please note: If changing version of the plugin you need to modify version in this files:
 * src/README.txt 
 * src/src/WPCOTool/Plugin.php
