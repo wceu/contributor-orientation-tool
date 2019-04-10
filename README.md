@@ -58,9 +58,9 @@ Workflow for adding new features is as follows:
 ## Changing plugin version
 
 Please note: If changing version of the plugin you need to modify version in this files:
-* src/README.txt 
-* src/src/WPCOTool/Plugin.php
-* src/contributor-orientation-tool.php
+* src/README.txt (also add update description at the end of file for new version)
+* src/src/WPCOTool/Plugin.php (modify class property: $version)
+* src/contributor-orientation-tool.php (modify plugin header)
 
 ## Plugin options
 
