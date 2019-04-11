@@ -18,7 +18,7 @@ class Settings {
      * Required capability
      * @var string
      */
-    private $capability = 'administrator';
+    private $capability = 'manage_options';
 
 	/**
 	 * Admin menu slug

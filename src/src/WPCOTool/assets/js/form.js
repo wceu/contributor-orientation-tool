@@ -9,14 +9,32 @@ export default class Form {
 		this.allSectionsWrapper = this.form.find('.wpcot__questions');
 		this.sections = this.allSectionsWrapper.find('section');
 		this.sectionActiveClass = 'wpcot__section--active';
+		this.steps = this.form.find('.wpcot__steps li');
+		this.stepsActiveClass = 'wpcot__steps--active';
 		this.buttonNextClass = 'wpcot__button-next';
 		this.buttonPrevClass = 'wpcot__button-prev';
+		this.timeout = null;
 
 		/* global wpcotData */
 		this.errorMessage = wpcotData.errorMessage;
 
 		this.form.find(`section .${this.buttonNextClass}`).on('click', (event) => this.next(event));
 		this.form.find(`section .${this.buttonPrevClass}`).on('click', (event) => this.prev(event));
+		window.addEventListener("orientationchange", () => this.resize());
+	}
+
+	/**
+	 * On window resize center active section
+	 */
+	resize() {
+
+		clearTimeout(this.timeout);
+
+		this.timeout = setTimeout( () => {
+			let activeSection = this.form.find(`.${this.sectionActiveClass}`);
+			this.move((activeSection.index() * activeSection.outerWidth()) * -1);
+		}, 500);
+
 	}
 
 	/**
@@ -63,7 +81,6 @@ export default class Form {
 		let sectionWidth = section.outerWidth();
 		let nextSection = section.next('section');
 		let fields = section.find('input[type="checkbox"]:checked');
-		let errorDiv = section.find('.wpcot__section-error');
 		let teams = new Set();
 
 		/**
@@ -82,7 +99,7 @@ export default class Form {
 		 * Alert to select form inputs
 		 */
 		if ( teams.size <= 0 ) {
-			errorDiv.text(this.errorMessage);
+			this.displayError(section, this.errorMessage, true);
 			return false;
 		}
 
@@ -93,7 +110,7 @@ export default class Form {
 			return false;
 		}
 
-		errorDiv.text('');
+		this.displayError(section, '', false);
 
 		/**
 		 * Filter next section fields
@@ -178,13 +195,36 @@ export default class Form {
 	}
 
 	/**
-	 * Remove active classes from all sections and add it to current section
+	 * Remove active classes from all sections and steps and add it to current section
 	 * @param {object} section jQuery section object
 	 */
-	addActiveClass( section ) {
+	addActiveClass(section) {
 
 		this.sections.removeClass(this.sectionActiveClass);
 		section.addClass(this.sectionActiveClass);
+
+		this.steps.removeClass(this.stepsActiveClass);
+		this.steps.eq(section.index()).addClass(this.stepsActiveClass);
+
+	}
+
+	/**
+	 * Display or remove error message for section
+	 * @param {object} section jQuery section object
+	 * @param {string} text
+	 */
+	displayError(section, text, active) {
+
+		let errorDiv = section.find('.wpcot__section-error');
+		let activeClass = 'wpcot__section-error--active';
+
+		if (active) {
+			errorDiv.addClass(activeClass);
+		} else {
+			errorDiv.removeClass(activeClass);
+		}
+
+		errorDiv.text(text);
 
 	}
 
