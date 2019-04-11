@@ -55,10 +55,18 @@ Workflow for adding new features is as follows:
 * Checkout to develop branch
 * Fetch upstream [more info](https://help.github.com/en/articles/syncing-a-fork)
 
+## Changing plugin version
+
 Please note: If changing version of the plugin you need to modify version in this files:
-* src/README.txt 
-* src/src/WPCOTool/Plugin.php
-* src/contributor-orientation-tool.php
+* src/README.txt (also add update description at the end of file for new version)
+* src/src/WPCOTool/Plugin.php (modify class property: $version)
+* src/contributor-orientation-tool.php (modify plugin header)
+
+## Plugin options
+
+Plugin options are located under Settings admin menu. 
+
+Visit Settings -> Contributor orientation tool page and there you can  disable teams that you don't need. 
 
 ## Licence
 
