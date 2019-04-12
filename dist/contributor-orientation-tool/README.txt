@@ -6,7 +6,7 @@ Tags:
 Requires at least: 5.0
 Tested up to: 5.1
 Requires PHP: 7.0
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -32,6 +32,9 @@ Or install it manually e.g.
 == Frequently Asked Questions ==
 
 == Changelog ==
+CREATED 11th February 2019
++ Version 0.0.1
+
 UPDATE 01st April 2019
 + Version 0.1.0
 - Created first fully functional prototype: Multipart form
@@ -41,3 +44,10 @@ UPDATE 10th April 2019
 - Added options page
 - Implemented responsive layout using new design
 - First stable version
+
+UPDATE 10th April 2019
++ Version 1.1.0
+- Added new last page desing
+- Changed team config and shortcode section rendering
+- Major change to js form logic
+- Small fixes

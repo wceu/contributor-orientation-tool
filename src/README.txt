@@ -32,6 +32,9 @@ Or install it manually e.g.
 == Frequently Asked Questions ==
 
 == Changelog ==
+CREATED 11th February 2019
++ Version 0.0.1
+
 UPDATE 01st April 2019
 + Version 0.1.0
 - Created first fully functional prototype: Multipart form
