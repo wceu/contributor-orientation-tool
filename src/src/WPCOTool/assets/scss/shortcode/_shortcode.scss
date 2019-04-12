@@ -17,7 +17,8 @@
 		/* Button */
 
 		button {
-			padding: 5px 25px;
+			padding: 12px 30px;
+			line-height: 1;
 			background-color: $color__main-lite;
 			color: $color__white;
 		}
@@ -168,7 +169,7 @@
 		}
 
 		section {
-			padding: 1.5rem;
+			padding: 1.5rem 1.5rem 2.5rem 1.5rem;
 			width: $form-section__width;
 			height: inherit;
 			display: flex;
@@ -245,7 +246,7 @@
 			.wpcot__buttons {
 				display: flex;
 				justify-content: flex-end;
-				align-items: flex-end;
+				align-items: center;
 				margin-top: auto;
 				width: 100%;
 
@@ -254,7 +255,21 @@
 				}
 
 				.wpcot__button-prev {
+					background-color: transparent !important;
+					color: $color__main-dark !important;
+					font-weight: 400;
+					text-decoration: underline;
+					border-right: 1px solid $color__main-dark;
+					height: auto;
+					padding: 0 15px 0 0;
 					margin-right: 15px;
+					transition: border 0.25s ease-in-out, color 0.25s ease-in-out;
+
+					&:hover {
+						color: $color__main-lite !important;
+						border-right: 1px solid $color__main-lite;
+						background-color: transparent;
+					}
 				}
 			}
 
@@ -280,7 +295,11 @@
 					}
 				}
 
-				.wpcot__button-prev,
+				.wpcot__button-prev {
+					margin-right: 0;
+					border-right: none;
+				}
+
 				.wpcot__button-next {
 					display: none;
 				}
