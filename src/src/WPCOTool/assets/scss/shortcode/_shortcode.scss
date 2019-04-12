@@ -159,8 +159,9 @@
 			justify-content: flex-start;
 			align-items: stretch;
 			width: calc(#{$form-section__width} * 4);
-			transition: transform 0.25s ease-in-out;
-			height: $form-section__min-height;
+			transition: transform 0.25s ease-in-out 0.05s;
+			min-height: $form-section__min-height;
+			height: auto;
 		}
 
 		.wpcot__no-teams-selected {
@@ -176,6 +177,9 @@
 			flex-direction: column;
 			justify-content: flex-start;
 			align-items: flex-start;
+			opacity: 0;
+			visibility: hidden;
+			transition: opacity 0s ease-in-out, visibility 0s ease-in-out;
 
 			> h3 {
 				margin-bottom: 30px;
@@ -193,26 +197,7 @@
 				}
 			}
 
-			.wpcot__notice {
-				background-color: $background__blue-lite;
-				padding: 15px;
-				margin-bottom: 3em;
-				font-size: 1em;
-
-				@media (max-width: $brakepoint__sm-max) {
-					font-size: 0.9em;
-				}
-
-				p {
-					margin: 0;
-					font-size: inherit;
-				}
-			}
-
 			.wpcot__choices {
-				overflow-x: hidden;
-				overflow-y: auto;
-				max-height: 65%;
 				width: 100%;
 				position: relative;
 
@@ -241,6 +226,19 @@
 				padding: 15px;
 				margin-bottom: 1em;
 				line-height: 1;
+			}
+
+			.wpcot__notice {
+				background-color: $background__blue-lite;
+				padding: 15px;
+				margin-top: 3em;
+				margin-bottom: 3em;
+				font-size: 0.9em;
+
+				p {
+					margin: 0;
+					font-size: inherit;
+				}
 			}
 
 			.wpcot__buttons {
@@ -273,6 +271,16 @@
 				}
 			}
 
+			/* Hide all inputs that we won't need so we can have height auto, or it will be very huge with all inputs displayed */
+
+			&:not(:first-of-type) {
+				.wpcot__choices {
+					> .wpcot__input-group:not(.wpcot__input-group--visible) {
+						display: none;
+					}
+				}
+			}
+
 			&:first-of-type {
 				.wpcot__button-prev {
 					display: none;
@@ -283,8 +291,6 @@
 				/* Hide fake checboxes in last section */
 
 				.wpcot__choices {
-					max-height: 55%;
-
 					label {
 						padding-left: 0;
 
@@ -297,7 +303,8 @@
 
 				.wpcot__button-prev {
 					margin-right: 0;
-					border-right: none;
+					padding-right: 0;
+					border: none;
 				}
 
 				.wpcot__button-next {
@@ -306,9 +313,55 @@
 			}
 
 			&#wpcot-section-teams {
-				input[type="checkbox"] {
-					display: none;
+				.wpcot__choices {
+					> div {
+						margin-bottom: 15px;
+
+						input[type="checkbox"] {
+							display: none;
+						}
+
+						a {
+							display: flex;
+							justify-content: flex-start;
+							align-items: center;
+							text-decoration: none;
+							box-shadow: none;
+							font-weight: 500;
+							color: $color__main-lite-05;
+						}
+
+						label {
+							font-size: 1.2em;
+							margin-bottom: 10px;
+
+							svg {
+								width: auto;
+								height: 35px;
+								fill: $color__main-lite;
+								margin-right: 5px;
+							}
+						}
+
+						> p {
+							margin: 0;
+							padding: 0;
+							font-size: 0.9em;
+						}
+
+						> a:last-of-type {
+							font-size: 0.9em;
+						}
+					}
 				}
+			}
+
+			/* Set opacity for non active section */
+
+			&.wpcot__section--active {
+				opacity: 1;
+				visibility: visible;
+				transition-duration: 0.25s;
 			}
 		}
 

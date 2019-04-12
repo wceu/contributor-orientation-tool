@@ -127,16 +127,32 @@ class Shortcode {
 	private function get_teams_section( $selected_teams ) {
 
 		$fields = array();
-		foreach ( $selected_teams as $id => $name ) {
+		foreach ( $selected_teams as $id => $data ) {
 
-			$team = new Team( $id, $name );
-			$team_id = $team->get_id();
+			if(
+				! isset( $data['name'] )
+				|| ! isset( $data['description'] )
+				|| ! isset( $data['icon'] )
+				|| ! isset( $data['url'] )
+			) {
+				continue;
+			}
 
-			$fields[] = $this->get_checkbox_field(
-				$team->get_name(),
+			$team = new Team(
+				$id,
+				$data['name'],
+				$data['description'],
+				$data['icon'],
+				$data['url']
+			);
+
+			$fields[] = $this->get_team_checkbox_field(
 				sprintf( '%s__teams', $this->prefix ),
-				$team_id,
-				$team_id
+				$team->get_id(),
+				$team->get_icon(),
+				$team->get_name(),
+				$team->get_description(),
+				$team->get_url()
 			);
 
 		}
@@ -146,7 +162,7 @@ class Shortcode {
 			esc_html__( 'Based on your answers, we recommend that you join some of teams below:', 'contributor-orientation-tool' ),
 			implode( '', $fields ),
 			'',
-			$this->get_button( esc_html__( 'Previous section', 'contributor-orientation-tool' ), true ),
+			$this->get_button( $this->get_back_button_text(), true ),
 			'',
 			$this->get_form_notice()
 		);
@@ -206,8 +222,8 @@ class Shortcode {
 	            $section_id,
 	            $section['headline'],
 	            implode( '', $fields ),
-	            $this->get_button( esc_html__( 'Continue', 'contributor-orientation-tool' ), false ),
-	            $this->get_button( esc_html__( 'Back', 'contributor-orientation-tool' ), true ),
+	            $this->get_button( $this->get_next_button_text(), false ),
+	            $this->get_button( $this->get_back_button_text(), true ),
 	            $section_id === $section_1_key ? $this->active_section_class : ''
             );
 
@@ -234,11 +250,11 @@ class Shortcode {
 	    return sprintf(
 		    '<section id="%1$s" class="%6$s%7$s">
 				<h3>%2$s</h3>
-				%10$s
 				<div class="%11$s">
 					%3$s
 					<div class="%9$s"></div>
 				</div>
+				%10$s
 				<div class="%8$s">%5$s%4$s</div>
 			</section>',
 		    esc_attr( $id ), // %1$s
@@ -282,17 +298,62 @@ class Shortcode {
 	 *
 	 * @return string
 	 */
-    private function get_checkbox_field( $label, $name, $value, $id = '' ) {
+    private function get_checkbox_field( $label, $name, $value, $id ) {
 
 		return sprintf(
-			'<div><input id="%1$s" type="checkbox" name="%3$s[]" value="%4$s" /><label for="%1$s">%2$s</label></div>',
+			'<div class="%5$s"><input id="%1$s" type="checkbox" name="%3$s[]" value="%4$s" /><label for="%1$s">%2$s</label></div>',
 			esc_attr( $id ), // %1$s
 			esc_html( $label ), // %2$s
 			sanitize_text_field( $name ), // %3$s
-			esc_js( $value ) // %4$s
+			esc_js( $value ), // %4$s
+			$this->get_checkbox_field_class() // %5$s
 		);
 
     }
+
+	/**
+	 * Return checkbox html
+	 *
+	 * @param string $name Input name
+	 * @param string $value Input value
+	 * @param string $team_icon
+	 * @param string $team_name
+	 * @param string $team_description
+	 * @param string $team_url
+	 *
+	 * @return string
+	 */
+	private function get_team_checkbox_field( $name, $value, $team_icon, $team_name, $team_description, $team_url ) {
+
+		return sprintf(
+			'<div class="%9$s">
+				<input id="%1$s" type="checkbox" name="%2$s[]" value="%3$s" />
+				<label for="%1$s"><a href="%7$s" title="%5$s" target="_blank">%4$s%5$s</a></label>
+				<p>%6$s</p>
+				<a href="%7$s" title="%5$s" target="_blank">%8$s</a>
+			</div>',
+			esc_attr( $value ), // %1$s
+			sanitize_text_field( $name ), // %2$s
+			esc_js( $value ), // %3$s
+			$team_icon, // %4$s
+			esc_html( $team_name ), // %5$s
+			wp_kses_post( $team_description ), // %6$s
+			esc_url( $team_url ), // %7$s
+			sprintf( esc_html__( 'Learn more about %s »' ), esc_html( $team_name ) ), // %8$s
+			$this->get_checkbox_field_class() // %9$s
+		);
+
+	}
+
+	/**
+	 * Return class for section input group
+	 * @return string
+	 */
+	private function get_checkbox_field_class() {
+
+		return sprintf( '%s__input-group', $this->prefix );
+
+	}
 
 	/**
 	 * Return form header which contain form steps
@@ -360,6 +421,26 @@ class Shortcode {
 			ARRAY_FILTER_USE_KEY
 		);
 
+
+	}
+
+	/**
+	 * Return next button text
+	 * @return string
+	 */
+	private function get_next_button_text() {
+
+		return esc_html__( 'Next', 'contributor-orientation-tool' );
+
+	}
+
+	/**
+	 * Return back button text
+	 * @return string
+	 */
+	private function get_back_button_text() {
+
+		return esc_html__( 'Go back', 'contributor-orientation-tool' );
 
 	}
 
