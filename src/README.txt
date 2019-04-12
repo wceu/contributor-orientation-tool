@@ -1,6 +1,6 @@
 === Contributor orientation tool ===
 
-Contributors: milana_cap, siemens82, josefreitas2, wpaurorautasic
+Contributors: milana_cap, siemens82, josefreitas2, vbaimas, wpaurorautasic
 Donate link:
 Tags:
 Requires at least: 5.0
