@@ -13,6 +13,8 @@ export default class Form {
 		this.stepsActiveClass = 'wpcot__steps--active';
 		this.buttonNextClass = 'wpcot__button-next';
 		this.buttonPrevClass = 'wpcot__button-prev';
+		this.inputGroupClass = 'wpcot__input-group';
+		this.inputGroupActiveClass = 'wpcot__input-group--visible';
 		this.timeout = null;
 
 		/* global wpcotData */
@@ -21,6 +23,7 @@ export default class Form {
 		this.form.find(`section .${this.buttonNextClass}`).on('click', (event) => this.next(event));
 		this.form.find(`section .${this.buttonPrevClass}`).on('click', (event) => this.prev(event));
 		window.addEventListener("orientationchange", () => this.resize());
+		this.activateFirstSection();
 	}
 
 	/**
@@ -34,6 +37,16 @@ export default class Form {
 			let activeSection = this.form.find(`.${this.sectionActiveClass}`);
 			this.move((activeSection.index() * activeSection.outerWidth()) * -1);
 		}, 500);
+
+	}
+
+	/**
+	 * Mark all inputs in first section as active.
+	 * This will never change but we need it so we can move back to this section
+	 */
+	activateFirstSection() {
+
+		this.allSectionsWrapper.find('section:first-of-type').find(`.${this.inputGroupClass}`).addClass(this.inputGroupActiveClass);
 
 	}
 
@@ -52,6 +65,8 @@ export default class Form {
 		if (prevSection.length < 1) {
 			return false;
 		}
+
+		section.find(`.${this.inputGroupClass}`).removeClass(this.inputGroupActiveClass);
 
 		/**
 		 * Check if we have only one result to move to next section
@@ -132,11 +147,11 @@ export default class Form {
 
 			}
 
-			let parentField = jQuery(nextSectionField).parent('div');
+			let parentField = jQuery(nextSectionField).parent(`.${this.inputGroupClass}`);
 			if ( ! validate ) {
-				parentField.hide();
+				parentField.removeClass(this.inputGroupActiveClass);
 			} else {
-				parentField.show();
+				parentField.addClass(this.inputGroupActiveClass);
 			}
 
 		}
@@ -180,12 +195,11 @@ export default class Form {
 	 */
 	maybeSkipSection(section, $next) {
 
-
 		let buttonClass = $next ? this.buttonNextClass : this.buttonPrevClass;
 
-		let fieldsDisplayed = section.find('input[type="checkbox"]:visible');
+		let fieldsDisplayed = section.find(`div.${this.inputGroupActiveClass}`);
 		if ( fieldsDisplayed.length <= 1 && ! section.attr('id').endsWith('teams') ) {
-			fieldsDisplayed.attr('checked', 'checked');
+			fieldsDisplayed.find('input[type="checkbox"]').attr('checked', 'checked');
 			section.find(`.${buttonClass}`).trigger('click');
 			return true;
 		}
