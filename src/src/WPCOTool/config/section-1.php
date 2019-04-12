@@ -43,7 +43,7 @@ return array(
 			)
 		),
 		array(
-			'label' => esc_html__( 'I\'m a WordPress user  / other', 'contributor-orientation-tool' ),
+			'label' => esc_html__( 'I\'m a WordPress user / other', 'contributor-orientation-tool' ),
 			'teams' => array(
 				'support',
 				'community',
