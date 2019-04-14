@@ -8,8 +8,9 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-    border: 1px solid #8e1254;
+    border: 1px solid #bca713;
     font-size: 16px;
+    border-radius: 0.1875rem;
     /* Button */
     /* Checkbox */ }
     #wpcot form button {
@@ -35,11 +36,11 @@
           top: 0;
           width: 1.25em;
           height: 1.25em;
-          border: 1px solid #1b646c;
+          border: 1px solid rgba(0, 0, 0, 0.75);
           background-color: #fff;
           border-radius: 0.1875rem;
-          -webkit-box-shadow: inset 0 1px 1px #1b646c;
-                  box-shadow: inset 0 1px 1px #1b646c; }
+          -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.75);
+                  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.75); }
         #wpcot form [type="checkbox"] + label::after {
           content: '\2713\0020';
           position: absolute;
@@ -48,8 +49,8 @@
           font-size: 1.7em;
           line-height: 0.8;
           border-radius: 0.1875rem;
-          background-color: #1b646c;
-          color: #fff;
+          background-color: transparent;
+          color: rgba(0, 0, 0, 0.75);
           -webkit-transition: all 0.2s linear;
           transition: all 0.2s linear; }
       #wpcot form [type="checkbox"]:not(:checked) + label::after {
@@ -76,7 +77,7 @@
       -webkit-box-align: stretch;
           -ms-flex-align: stretch;
               align-items: stretch;
-      border-bottom: 1px solid #8e1254;
+      border-bottom: 1px solid #bca713;
       overflow: hidden; }
     #wpcot form .wpcot__steps li {
       text-align: center;
@@ -84,11 +85,14 @@
       /* Leave some space for last section to be equal as it doesn't have ::after */
       font-size: 1em;
       line-height: 46px;
+      font-weight: 700;
+      text-transform: uppercase;
       padding: 0 10px;
       margin: 0;
       position: relative;
       height: 46px;
-      background-color: #fff; }
+      background-color: #fff;
+      color: rgba(0, 0, 0, 0.6); }
       #wpcot form .wpcot__steps li span {
         z-index: 3;
         position: relative; }
@@ -112,15 +116,15 @@
         height: 46px;
         width: 46px;
         border-width: 1px 1px 0 0;
-        border-color: #8e1254;
+        border-color: #bca713;
         border-style: solid;
         -webkit-transform: rotate(45deg);
                 transform: rotate(45deg);
         background-color: inherit;
         z-index: 2; }
       #wpcot form .wpcot__steps li.wpcot__steps--active, #wpcot form .wpcot__steps li.wpcot__steps--active::after {
-        background-color: #8e1254;
-        color: #fff; }
+        background-color: #bca713;
+        color: rgba(0, 0, 0, 0.75); }
     #wpcot form .wpcot__questions {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -220,18 +224,22 @@
         margin-top: auto;
         width: 100%; }
         #wpcot form section .wpcot__buttons .wpcot__button-next {
-          background-color: #8e1254; }
+          background-color: #e52b8a;
+          border-radius: 0.1875rem; }
+          #wpcot form section .wpcot__buttons .wpcot__button-next:hover {
+            background-color: #8e1254; }
         #wpcot form section .wpcot__buttons .wpcot__button-prev {
           background-color: transparent !important;
-          color: #8e1254 !important;
+          color: rgba(0, 0, 0, 0.85);
           font-weight: 400;
           text-decoration: underline;
-          border-right: 1px solid #8e1254;
+          border-right: 1px solid rgba(0, 0, 0, 0.85);
           height: auto;
           padding: 0 15px 0 0;
           margin-right: 15px;
           -webkit-transition: border 0.25s ease-in-out, color 0.25s ease-in-out;
-          transition: border 0.25s ease-in-out, color 0.25s ease-in-out; }
+          transition: border 0.25s ease-in-out, color 0.25s ease-in-out;
+          border-radius: 0; }
           #wpcot form section .wpcot__buttons .wpcot__button-prev:hover {
             color: #db0577 !important;
             border-right: 1px solid #db0577;
