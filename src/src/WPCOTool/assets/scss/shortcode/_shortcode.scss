@@ -11,8 +11,9 @@
 		position: relative;
 		width: $form-section__width;
 		overflow: hidden;
-		border: 1px solid $border__color-main;
+		border: 1px solid $border__color-secondary;
 		font-size: 16px;
+		border-radius: 0.1875rem;
 
 		/* Button */
 
@@ -43,10 +44,10 @@
 					top: 0;
 					width: 1.25em;
 					height: 1.25em;
-					border: 1px solid $color__green;
+					border: 1px solid $color__black-mid;
 					background-color: $color__white;
 					border-radius: 0.1875rem;
-					box-shadow: inset 0 1px 1px $color__green;
+					box-shadow: inset 0 1px 1px $color__black-mid;
 				}
 
 				/* checked mark aspect */
@@ -59,8 +60,8 @@
 					font-size: 1.7em;
 					line-height: 0.8;
 					border-radius: 0.1875rem;
-					background-color: $color__green;
-					color: $color__white;
+					background-color: transparent;
+					color: $color__black-mid;
 					transition: all 0.2s linear;
 				}
 			}
@@ -93,7 +94,7 @@
 				display: flex;
 				justify-content: flex-start;
 				align-items: stretch;
-				border-bottom: 1px solid $border__color-main;
+				border-bottom: 1px solid $border__color-secondary;
 				overflow: hidden;
 			}
 
@@ -102,11 +103,14 @@
 				width: calc((100% / 4) - 5px); /* Leave some space for last section to be equal as it doesn't have ::after */
 				font-size: 1em;
 				line-height: 46px;
+				font-weight: 700;
+				text-transform: uppercase;
 				padding: 0 10px;
 				margin: 0;
 				position: relative;
 				height: 46px;
 				background-color: $color__white;
+				color: $color__black-weak;
 
 				span {
 					z-index: 3;
@@ -139,7 +143,7 @@
 					height: 46px;
 					width: 46px;
 					border-width: 1px 1px 0 0;
-					border-color: $border__color-main;
+					border-color: $border__color-secondary;
 					border-style: solid;
 					transform: rotate(45deg);
 					background-color: inherit;
@@ -148,8 +152,8 @@
 
 				&.wpcot__steps--active,
 				&.wpcot__steps--active::after {
-					background-color: $color__main-dark;
-					color: $color__white;
+					background-color: $color__main-secondary;
+					color: $color__black-mid;
 				}
 			}
 		}
@@ -249,19 +253,25 @@
 				width: 100%;
 
 				.wpcot__button-next {
-					background-color: $color__main-dark;
+					background-color: $background__button;
+					border-radius: 0.1875rem;
+
+					&:hover {
+						background-color: $background__button-hover;
+					}
 				}
 
 				.wpcot__button-prev {
 					background-color: transparent !important;
-					color: $color__main-dark !important;
+					color: $color__black;
 					font-weight: 400;
 					text-decoration: underline;
-					border-right: 1px solid $color__main-dark;
+					border-right: 1px solid $color__black;
 					height: auto;
 					padding: 0 15px 0 0;
 					margin-right: 15px;
 					transition: border 0.25s ease-in-out, color 0.25s ease-in-out;
+					border-radius: 0;
 
 					&:hover {
 						color: $color__main-lite !important;
