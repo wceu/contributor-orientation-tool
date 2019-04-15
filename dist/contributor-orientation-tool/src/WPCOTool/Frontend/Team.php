@@ -50,7 +50,7 @@ class Team {
 	 * @param string $icon Team icon (dashicons)
 	 * @param string $url Url to the team page on WordPress.org
 	 */
-	public function __construct( string $id, string $name, string $description, string $icon, string $url ) {
+	public function __construct( string $id, string $name, string $description = '', string $icon = '', string $url = '' ) {
 
 		$this->id = sanitize_text_field( $id );
 		$this->name = sanitize_text_field( $name );

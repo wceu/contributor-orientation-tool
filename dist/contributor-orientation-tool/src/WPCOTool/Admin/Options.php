@@ -150,7 +150,7 @@ class Options {
 
 		foreach ( $teams as $id => $team ) {
 
-			$team = new Team( $id, $team['name'], $team['description'], $team['icon'], $team['url'] );
+			$team = new Team( $id, $team['name'] );
 			$team_id = $team->get_id();
 
 			printf(
