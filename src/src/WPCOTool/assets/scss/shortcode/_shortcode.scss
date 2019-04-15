@@ -13,14 +13,19 @@
 		overflow: hidden;
 		border: 1px solid $border__color-main;
 		font-size: 16px;
+		border-radius: 0.1875rem;
 
 		/* Button */
 
 		button {
-			padding: 12px 30px;
+			padding: 8px 36px;
 			line-height: 1;
-			background-color: $color__main-lite;
+			background-color: $background__button;
 			color: $color__white;
+
+			&:hover {
+				background-color: $background__button-hover;
+			}
 		}
 
 		/* Checkbox */
@@ -98,31 +103,51 @@
 			}
 
 			li {
-				text-align: center;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				text-align: left;
 				width: calc((100% / 4) - 5px); /* Leave some space for last section to be equal as it doesn't have ::after */
 				font-size: 1em;
-				line-height: 46px;
+				line-height: 1.1;
+				font-weight: 700;
+				text-transform: uppercase;
 				padding: 0 10px;
 				margin: 0;
 				position: relative;
 				height: 46px;
 				background-color: $color__white;
+				color: $color__black-weak;
 
 				span {
 					z-index: 3;
 					position: relative;
 				}
 
+				.wpcot__steps-responsive {
+					display: none;
+				}
+
 				.wpcot__steps-text {
 					margin-right: 5%;
 
-					@media (max-width: $brakepoint__sm-max) {
-						display: none;
+					span {
+						display: block;
+						font-size: 0.9em;
+						text-transform: none;
+						font-weight: 400;
 					}
 				}
 
-				@media (max-width: $brakepoint__sx-max) {
-					span:not(.wpcot__steps-text) {
+				@media (max-width: $brakepoint__sm-max) {
+					text-align: center;
+
+					.wpcot__steps-text {
+						display: none;
+					}
+
+					.wpcot__steps-responsive {
+						display: block;
 						margin-left: 5px;
 					}
 				}
@@ -184,9 +209,12 @@
 			> h3 {
 				margin-bottom: 30px;
 				font-size: 1.95312em;
-				padding-right: 3em;
 				margin-top: 1.5em;
 				font-weight: 600;
+
+				@media (min-width: $brakepoint__md-min) {
+					padding-right: 3em;
+				}
 
 				@media (max-width: $brakepoint__ipad-max) and (min-width: $brakepoint__sm-min) {
 					font-size: 1.6em;
@@ -249,19 +277,26 @@
 				width: 100%;
 
 				.wpcot__button-next {
-					background-color: $color__main-dark;
+					border-radius: 0.1875rem;
+					color: $color__white !important;
+					font-weight: 400;
+
+					&:hover {
+						background-color: $background__button-hover !important;
+					}
 				}
 
 				.wpcot__button-prev {
 					background-color: transparent !important;
-					color: $color__main-dark !important;
+					color: $color__black !important;
 					font-weight: 400;
 					text-decoration: underline;
-					border-right: 1px solid $color__main-dark;
+					border-right: 1px solid $color__black;
 					height: auto;
 					padding: 0 15px 0 0;
 					margin-right: 15px;
 					transition: border 0.25s ease-in-out, color 0.25s ease-in-out;
+					border-radius: 0;
 
 					&:hover {
 						color: $color__main-lite !important;

@@ -148,9 +148,9 @@ class Options {
 		$values = $this->get_values();
 		$teams = Plugin::get_form_config( 'teams.php' );
 
-		foreach ( $teams as $id => $name ) {
+		foreach ( $teams as $id => $team ) {
 
-			$team = new Team( $id, $name );
+			$team = new Team( $id, $team['name'] );
 			$team_id = $team->get_id();
 
 			printf(

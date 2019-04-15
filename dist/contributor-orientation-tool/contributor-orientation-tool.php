@@ -3,14 +3,14 @@
  * Plugin Name: Contributor orientation tool
  * Plugin URI: https://github.com/wceu/contributor-orientation-tool
  * Description: A WordPress plugin aiming to help new contributors decide which make team/s to contribute to or join at Contributor Day.
- * Version: 1.1.0
+ * Version: 1.1.2
  * Author: Aleksandar Predic
  * Author URI: https://www.acapredic.com/
  * Tags: comments, spam
  * Requires at least: 5.0
  * Tested up to: 5.1
  * Requires PHP: 7.0
- * Stable tag: 0.0.1
+ * Stable tag: 1.1.2
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain: contributor-orientation-tool

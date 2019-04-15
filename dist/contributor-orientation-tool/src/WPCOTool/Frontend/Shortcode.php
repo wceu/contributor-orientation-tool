@@ -45,6 +45,12 @@ class Shortcode {
 	private $number_of_sections = 4;
 
 	/**
+	 * Steps for form header
+	 * @var array
+	 */
+	private $steps = array();
+
+	/**
 	 * Shortcode constructor.
 	 *
 	 * @param string $version Plugin version
@@ -57,6 +63,13 @@ class Shortcode {
 		$this->active_section_class = sprintf( ' %s__section--active', $this->prefix );
 		add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ) );
 		add_shortcode( $this->shortcode_tag, array( $this, 'output' ) );
+
+		$this->steps = array(
+			1 => esc_html__( 'Use of WordPress', 'contributor-orientation-tool' ),
+			2 => esc_html__( 'Passionate', 'contributor-orientation-tool' ),
+			3 => esc_html__( 'Experience', 'contributor-orientation-tool' ),
+			4 => esc_html__( 'Done!', 'contributor-orientation-tool' )
+		);
 
 	}
 
@@ -361,16 +374,27 @@ class Shortcode {
 	 */
 	private function get_form_header() {
 
+		if ( empty( $this->steps ) ) {
+			return '';
+		}
+
 		$number = $this->number_of_sections;
 		$steps = array();
 		for( $i = 1; $i <= $number; $i++ ) {
 
 			$steps[] = sprintf(
-				'<li%1$s><span class="%2$s">%3$s</span><span>%4$d</span></li>',
+				'<li%1$s>
+					<span class="%2$s">%3$s
+						<span>%6$s</span>
+					</span>
+					<span class="%5$s">%4$d</span>
+				</li>',
 				$i === 1 ? sprintf( ' class="%s"', sprintf( '%s__steps--active', $this->prefix ) ) : '', // %1$s
 				sprintf( '%s__steps-text', $this->prefix ), // %2$s
-				esc_html__( 'Step', 'contributor-orientation-tool' ), // %3$s
-				$i // %4$d
+				sprintf( esc_html__( 'Step %d :', 'contributor-orientation-tool' ), $i ), // %3$s
+				$i, // %4$d
+				sprintf( '%s__steps-responsive', $this->prefix ), // %5$d
+				$this->steps[ $i ] // %6$d
 			);
 
 		}

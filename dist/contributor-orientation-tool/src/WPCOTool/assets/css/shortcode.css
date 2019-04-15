@@ -10,13 +10,16 @@
     overflow: hidden;
     border: 1px solid #8e1254;
     font-size: 16px;
+    border-radius: 0.1875rem;
     /* Button */
     /* Checkbox */ }
     #wpcot form button {
-      padding: 12px 30px;
+      padding: 8px 36px;
       line-height: 1;
-      background-color: #db0577;
+      background-color: #e52b8a;
       color: #fff; }
+      #wpcot form button:hover {
+        background-color: #8e1254; }
     #wpcot form [type="checkbox"] {
       position: absolute;
       left: -9999px;
@@ -79,27 +82,48 @@
       border-bottom: 1px solid #8e1254;
       overflow: hidden; }
     #wpcot form .wpcot__steps li {
-      text-align: center;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      text-align: left;
       width: calc((100% / 4) - 5px);
       /* Leave some space for last section to be equal as it doesn't have ::after */
       font-size: 1em;
-      line-height: 46px;
+      line-height: 1.1;
+      font-weight: 700;
+      text-transform: uppercase;
       padding: 0 10px;
       margin: 0;
       position: relative;
       height: 46px;
-      background-color: #fff; }
+      background-color: #fff;
+      color: rgba(0, 0, 0, 0.6); }
       #wpcot form .wpcot__steps li span {
         z-index: 3;
         position: relative; }
+      #wpcot form .wpcot__steps li .wpcot__steps-responsive {
+        display: none; }
       #wpcot form .wpcot__steps li .wpcot__steps-text {
         margin-right: 5%; }
-        @media (max-width: 767px) {
+        #wpcot form .wpcot__steps li .wpcot__steps-text span {
+          display: block;
+          font-size: 0.9em;
+          text-transform: none;
+          font-weight: 400; }
+      @media (max-width: 767px) {
+        #wpcot form .wpcot__steps li {
+          text-align: center; }
           #wpcot form .wpcot__steps li .wpcot__steps-text {
-            display: none; } }
-      @media (max-width: 575px) {
-        #wpcot form .wpcot__steps li span:not(.wpcot__steps-text) {
-          margin-left: 5px; } }
+            display: none; }
+          #wpcot form .wpcot__steps li .wpcot__steps-responsive {
+            display: block;
+            margin-left: 5px; } }
       #wpcot form .wpcot__steps li:last-child {
         -webkit-box-flex: 1;
             -ms-flex: 1;
@@ -136,7 +160,7 @@
       transition: -webkit-transform 0.25s ease-in-out 0.05s;
       transition: transform 0.25s ease-in-out 0.05s;
       transition: transform 0.25s ease-in-out 0.05s, -webkit-transform 0.25s ease-in-out 0.05s;
-      min-height: 640px;
+      min-height: 600px;
       height: auto; }
     #wpcot form .wpcot__no-teams-selected {
       padding: 15px;
@@ -167,9 +191,11 @@
       #wpcot form section > h3 {
         margin-bottom: 30px;
         font-size: 1.95312em;
-        padding-right: 3em;
         margin-top: 1.5em;
         font-weight: 600; }
+        @media (min-width: 992px) {
+          #wpcot form section > h3 {
+            padding-right: 3em; } }
         @media (max-width: 1024px) and (min-width: 768px) {
           #wpcot form section > h3 {
             font-size: 1.6em; } }
@@ -220,18 +246,23 @@
         margin-top: auto;
         width: 100%; }
         #wpcot form section .wpcot__buttons .wpcot__button-next {
-          background-color: #8e1254; }
+          border-radius: 0.1875rem;
+          color: #fff !important;
+          font-weight: 400; }
+          #wpcot form section .wpcot__buttons .wpcot__button-next:hover {
+            background-color: #8e1254 !important; }
         #wpcot form section .wpcot__buttons .wpcot__button-prev {
           background-color: transparent !important;
-          color: #8e1254 !important;
+          color: rgba(0, 0, 0, 0.85) !important;
           font-weight: 400;
           text-decoration: underline;
-          border-right: 1px solid #8e1254;
+          border-right: 1px solid rgba(0, 0, 0, 0.85);
           height: auto;
           padding: 0 15px 0 0;
           margin-right: 15px;
           -webkit-transition: border 0.25s ease-in-out, color 0.25s ease-in-out;
-          transition: border 0.25s ease-in-out, color 0.25s ease-in-out; }
+          transition: border 0.25s ease-in-out, color 0.25s ease-in-out;
+          border-radius: 0; }
           #wpcot form section .wpcot__buttons .wpcot__button-prev:hover {
             color: #db0577 !important;
             border-right: 1px solid #db0577;

@@ -6,7 +6,7 @@ Tags:
 Requires at least: 5.0
 Tested up to: 5.1
 Requires PHP: 7.0
-Stable tag: 1.1.0
+Stable tag: 1.1.2
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -51,3 +51,15 @@ UPDATE 10th April 2019
 - Changed team config and shortcode section rendering
 - Major change to js form logic
 - Small fixes
+
+UPDATE 12th April 2019
++ Version 1.1.1
+- Fixed fatal error in plugin options
+- Design change
+- Small fixes
+
+UPDATE 15th April 2019
++ Version 1.1.2
+- Design change
+- Small fixes
+- Readme file change
