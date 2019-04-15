@@ -55,6 +55,15 @@ Workflow for adding new features is as follows:
 * Checkout to develop branch
 * Fetch upstream [more info](https://help.github.com/en/articles/syncing-a-fork)
 
+## Local Development environment setup
+
+For local development please use [VVV](https://github.com/Varying-Vagrant-Vagrants/VVV) or Docker
+
+* Clone repository outside your WordPress installation plugins folder
+* Sync dist/contributor-orientation-tool to your instalation wp-content/plugins folder
+* Run npm run watch to start development
+* Note: Don't make changes to dist folder as it is regenerated on every compile
+
 ## Changing plugin version
 
 Please note: If changing version of the plugin you need to modify version in this files:

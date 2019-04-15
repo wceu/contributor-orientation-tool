@@ -37,7 +37,7 @@ class Plugin {
 	 * @access   public
 	 * @var string
 	 */
-	public $version = '1.1.1';
+	public $version = '1.1.2';
 
 	/**
 	 * Absolute path to the directory where WordPress installed the plugin with the trailing slash
