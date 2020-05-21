@@ -35,9 +35,9 @@ return array(
 	),
 	'tv' => array(
 		'name'          => esc_html__( 'TV', 'contributor-orientation-tool' ),
-		'description'   => esc_html__( 'The TV team reviews and approves every video or subtitle submitted to WordPress.tv. They reach out to WordCamps to help with video post-production. Reviewing videos is a great way to learn about WordPress and help the community: experience is not required to get involved.', 'contributor-orientation-tool' ),
+		'description'   => esc_html__( 'The TV team reviews and approves every video submitted to WordPress.tv. They also help WordCamps with video post-production and are responsible for the captioning and subtitling of published videos. Reviewing videos is a great way to learn about WordPress and help the community: experience is not required to get involved.', 'contributor-orientation-tool' ),
 		'icon'          => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><rect x="0" fill="none" width="20" height="20"/><g><path d="M12 13V7c0-1.1-.9-2-2-2H3c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h7c1.1 0 2-.9 2-2zm1-2.5l6 4.5V5l-6 4.5v1z"/></g></svg>',
-		'url'           => 'https://make.wordpress.org/tv/handbook/contributor-day/',
+		'url'           => 'https://make.wordpress.org/tv/handbook/',
 	),
 	'core' => array(
 		'name'          => esc_html__( 'Core', 'contributor-orientation-tool' ),
