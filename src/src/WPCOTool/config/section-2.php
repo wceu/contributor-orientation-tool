@@ -86,5 +86,11 @@ return array(
 				'polyglots',
 			)
 		),
+		array(
+			'label' => esc_html__( 'Accessibility', 'contributor-orientation-tool' ),
+			'teams' => array(
+				'accessibility',
+			)
+		),
 	)
 );
