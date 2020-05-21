@@ -46,6 +46,7 @@ return array(
 			'teams' => array(
 				'core',
 				'meta',
+				'cli',
 			)
 		),
 		array(
@@ -88,6 +89,7 @@ return array(
 			'label' => esc_html__( 'Writing automated tests', 'contributor-orientation-tool' ),
 			'teams' => array(
 				'tide',
+				'cli',
 			)
 		),
 	)

@@ -18,6 +18,7 @@ return array(
 				'mobile',
 				'accessibility',
 				'tide',
+				'cli',
 			) // Form field value
 		),
 		array(
