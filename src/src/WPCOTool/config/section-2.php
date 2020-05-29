@@ -14,6 +14,7 @@ return array(
 				'plugins',
 				'accessibility',
 				'tide',
+				'cli',
 			) // Form field value
 		),
 		array(
@@ -21,6 +22,7 @@ return array(
 			'teams' => array(
 				'meta',
 				'tide',
+				'cli',
 			)
 		),
 		array(
@@ -50,6 +52,7 @@ return array(
 				'core',
 				'documentation',
 				'tide',
+				'cli',
 			)
 		),
 		array(
