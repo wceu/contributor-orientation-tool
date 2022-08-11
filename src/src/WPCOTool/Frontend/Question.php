@@ -26,7 +26,7 @@ class Question {
 	 * @param string $label Question label displayed to the user in the form
 	 * @param array $teams List of teams related to this label
 	 */
-	public function __construct( string $label, array $teams ) {
+	public function __construct( $label, array $teams ) {
 
 		$this->label = $label;
 		$this->teams = $teams;
