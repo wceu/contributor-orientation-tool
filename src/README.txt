@@ -20,7 +20,7 @@ A WordPress plugin aiming to help new contributors decide which make team/s to c
 
 This section describes how to install the plugin and get it working.
 
-1. Install the plugin trough WordpPress interface
+1. Install the plugin through the WordPress interface
 
 Or install it manually e.g.
 

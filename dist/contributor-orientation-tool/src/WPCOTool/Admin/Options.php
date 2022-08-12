@@ -153,7 +153,7 @@ class Options {
 	 */
 	public function section_info() {
 
-		esc_html_e( 'Use this option to disable teams that you don\'t need it the tool.', 'contributor-orientation-tool' );
+		esc_html_e( 'Use this option to disable teams that you don\'t need in the tool.', 'contributor-orientation-tool' );
 
 	}
 
