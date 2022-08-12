@@ -1,7 +1,7 @@
 {
   "name": "contributor-orientation-tool",
   "version": "0.0.1",
-  "description": "A WordPress plugin aiming to help new contributors decide which make team/s to contribute to or join at Contributor Day.",
+  "description": "A WordPress plugin aiming to help new contributors decide which Make team(s) to contribute to or join at Contributor Day.",
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode development",

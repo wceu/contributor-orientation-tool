@@ -14,7 +14,7 @@ Contributor Orientation Tool - A WP plugin aiming to help new contributors
 
 == Description ==
 
-A WordPress plugin aiming to help new contributors decide which make team/s to contribute to or join at Contributor Day.
+A WordPress plugin aiming to help new contributors decide which Make team(s) to contribute to or join at Contributor Day.
 
 == Installation ==
 
