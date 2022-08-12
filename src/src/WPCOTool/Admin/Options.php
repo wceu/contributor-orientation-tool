@@ -108,7 +108,7 @@ class Options {
 
 		add_settings_section(
 			$this->section_id, // ID
-			esc_html__( 'Enabled WordPress org teams', 'contributor-orientation-tool' ), // Title
+			esc_html__( 'Enabled WordPress.org Teams', 'contributor-orientation-tool' ), // Title
 			array( $this, 'section_info' ), // Callback
 			$this->page_id // Page
 		);
