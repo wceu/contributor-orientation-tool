@@ -77,6 +77,10 @@ Plugin options are located under Settings admin menu.
 
 Visit Settings -> Contributor orientation tool page and there you can  disable teams that you don't need. 
 
+## Shortcode
+
+Use the `[contributor-orientation-tool]` shortcode to insert the tool into a page.
+
 ## Licence
 
 The WordPress Widget Boilerplate is licensed under the GPL v2 or later.

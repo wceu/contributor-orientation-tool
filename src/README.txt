@@ -29,6 +29,10 @@ Or install it manually e.g.
 3. Activate the plugin through the 'Plugins' menu in WordPress
 4. Visit plugins admin page and configure settings
 
+== Usage ==
+
+To insert the Contributor Orientation Tool on a page, use the `[contributor-orientation-tool]` shortcode.
+
 == Frequently Asked Questions ==
 
 == Changelog ==
