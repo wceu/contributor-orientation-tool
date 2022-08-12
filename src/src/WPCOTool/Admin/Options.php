@@ -100,6 +100,13 @@ class Options {
 		);
 
 		add_settings_section(
+			'wpcotool-shortcode', // ID
+			esc_html__( 'Shortcode', 'contributor-orientation-tool' ), // Title
+			array( $this, 'shortcode_info' ), // Callback
+			$this->page_id // Page
+		);
+
+		add_settings_section(
 			$this->section_id, // ID
 			esc_html__( 'Enabled WordPress org teams', 'contributor-orientation-tool' ), // Title
 			array( $this, 'section_info' ), // Callback
@@ -129,6 +136,16 @@ class Options {
 		}
 
 		return array_map( 'sanitize_text_field', $input );
+	}
+
+	/**
+	 * Print the Shortcode info
+	 */
+	public function shortcode_info() {
+
+		esc_html_e( 'Use the following shortcode to insert the tool on a page:', 'contributor-orientation-tool' );
+		echo '<code>[contributor-orientation-tool]</code>';
+
 	}
 
 	/**
