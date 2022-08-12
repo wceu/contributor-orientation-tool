@@ -74,7 +74,7 @@ class Options {
 
 		?>
 		<div class="wrap">
-			<h1><?php esc_html_e( 'Contributor orientation tool settings', 'contributor-orientation-tool' ); ?></h1>
+			<h1><?php esc_html_e( 'Contributor Orientation Tool Settings', 'contributor-orientation-tool' ); ?></h1>
 			<form method="post" action="options.php">
 				<?php
 				// This prints out all hidden setting fields

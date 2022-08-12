@@ -1,4 +1,4 @@
-=== Contributor orientation tool ===
+=== Contributor Orientation Tool ===
 
 Contributors: milana_cap, siemens82, josefreitas2, vbaimas, wpaurorautasic
 Donate link:
@@ -10,7 +10,7 @@ Stable tag: 1.1.2
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
-Contributor orientation tool - A WP plugin aiming to help new contributors
+Contributor Orientation Tool - A WP plugin aiming to help new contributors
 
 == Description ==
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Contributor orientation tool
+ * Plugin Name: Contributor Orientation Tool
  * Plugin URI: https://github.com/wceu/contributor-orientation-tool
  * Description: A WordPress plugin aiming to help new contributors decide which make team/s to contribute to or join at Contributor Day.
  * Version: 1.1.2
