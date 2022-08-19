@@ -2,7 +2,17 @@
 A WordPress plugin aiming to help new contributors decide which make team/s to contribute to or join at Contributor Day.
 
 ## Getting Started
-Install [node.js](http://nodejs.org).
+Install [Node.js](https://nodejs.org) v14. A popular tool for installing or switching Node.js versions is [Node Version Manager](https://github.com/nvm-sh/nvm/blob/master/README.md) (aka `nvm`).
+
+To install Node.js v14 using the project's `.nvmrc` file, run:
+
+	nvm use
+
+or install the version directly with:
+
+	nvm install 14
+
+Once Node.js v14 has been installed, run:
 
 	npm install
 
