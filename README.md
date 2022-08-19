@@ -8,7 +8,7 @@ Install [node.js](http://nodejs.org).
 
 You are done.
 
-Please not that you need to have [webpack and webpack cli](https://webpack.js.org/guides/installation) globally for ease of use.
+Please note that you need to have [webpack and webpack cli](https://webpack.js.org/guides/installation) globally for ease of use.
 
 ### `npm run dev` or `npm run watch`
 
@@ -20,7 +20,7 @@ This will create a `dist` directory for project. **This directory represents dis
 
 ## Directory Structure
 
-Plese keep in mind that `dist` directory is rebuilt with each `npm dev`, `npm watch` or `npm prod` command.
+Please keep in mind that `dist` directory is rebuilt with each `npm dev`, `npm watch` or `npm prod` command.
 
 	dist/ [generated via webpack]
 	src/
