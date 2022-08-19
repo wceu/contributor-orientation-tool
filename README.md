@@ -36,6 +36,7 @@ Plese keep in mind that `dist` directory is rebuilt with each `npm dev`, `npm wa
 	.editorconfig
 	.eslintrc
 	.gitignore
+	.nvmrc
 	.stylelintrc
 	LICENSE
 	package.json
