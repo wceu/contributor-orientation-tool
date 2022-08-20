@@ -37,7 +37,7 @@ class Plugin {
 	 * @access   public
 	 * @var string
 	 */
-	public $version = '1.1.2';
+	public $version = '2.0.0';
 
 	/**
 	 * Absolute path to the directory where WordPress installed the plugin with the trailing slash
@@ -101,7 +101,7 @@ class Plugin {
 		}
 
 		/*
-		 * Add actions sorted via components we are adding trought plugin
+		 * Add actions sorted via components we are adding through plugin
 		 * All hooks are going to be added via class __construct method to make plugin modular
 		 */
 
@@ -148,7 +148,7 @@ class Plugin {
 	public static function assets_url( $file ) {
 
 		return plugins_url(
-			sprintf( 'assets/%s',
+			sprintf( '../../%s',
 				sanitize_text_field( $file )
 			),
 			__FILE__
