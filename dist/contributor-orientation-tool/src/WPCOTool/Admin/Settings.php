@@ -40,7 +40,7 @@ class Settings {
     public function __construct( string $prefix ) {
 
     	$this->prefix = $prefix;
-        $this->title = esc_html__( 'Contributor orientation tool', 'contributor-orientation-tool' );
+        $this->title = esc_html__( 'Contributor Orientation Tool', 'contributor-orientation-tool' );
         $this->menu_slug = sprintf(
         	'%s-%s',
 	        $this->prefix,

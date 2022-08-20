@@ -1,5 +1,5 @@
 # contributor-orientation-tool
-A WordPress plugin aiming to help new contributors decide which make team/s to contribute to or join at Contributor Day.
+A WordPress plugin aiming to help new contributors decide which Make team(s) to contribute to or join at Contributor Day.
 
 ## Getting Started
 Install [node.js](http://nodejs.org).
@@ -76,6 +76,10 @@ Please note: If changing version of the plugin you need to modify version in thi
 Plugin options are located under Settings admin menu. 
 
 Visit Settings -> Contributor orientation tool page and there you can  disable teams that you don't need. 
+
+## Shortcode
+
+Use the `[contributor-orientation-tool]` shortcode to insert the tool into a page.
 
 ## Licence
 

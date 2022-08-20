@@ -74,7 +74,7 @@ class Options {
 
 		?>
 		<div class="wrap">
-			<h1><?php esc_html_e( 'Contributor orientation tool settings', 'contributor-orientation-tool' ); ?></h1>
+			<h1><?php esc_html_e( 'Contributor Orientation Tool Settings', 'contributor-orientation-tool' ); ?></h1>
 			<form method="post" action="options.php">
 				<?php
 				// This prints out all hidden setting fields
@@ -100,8 +100,15 @@ class Options {
 		);
 
 		add_settings_section(
+			'wpcotool-shortcode', // ID
+			esc_html__( 'Shortcode', 'contributor-orientation-tool' ), // Title
+			array( $this, 'shortcode_info' ), // Callback
+			$this->page_id // Page
+		);
+
+		add_settings_section(
 			$this->section_id, // ID
-			esc_html__( 'Enabled WordPress org teams', 'contributor-orientation-tool' ), // Title
+			esc_html__( 'Enabled WordPress.org Teams', 'contributor-orientation-tool' ), // Title
 			array( $this, 'section_info' ), // Callback
 			$this->page_id // Page
 		);
@@ -132,11 +139,21 @@ class Options {
 	}
 
 	/**
+	 * Print the Shortcode info
+	 */
+	public function shortcode_info() {
+
+		esc_html_e( 'Use the following shortcode to insert the tool on a page:', 'contributor-orientation-tool' );
+		echo '<code>[contributor-orientation-tool]</code>';
+
+	}
+
+	/**
 	 * Print the Section text
 	 */
 	public function section_info() {
 
-		esc_html_e( 'Use this option to disable teams that you don\'t need it the tool.', 'contributor-orientation-tool' );
+		esc_html_e( 'Use this option to disable teams that you don\'t need in the tool.', 'contributor-orientation-tool' );
 
 	}
 
