@@ -8,39 +8,13 @@ Install [node.js](http://nodejs.org).
 
 You are done.
 
-Please not that you need to have [webpack and webpack cli](https://webpack.js.org/guides/installation) globally for ease of use.
+### `npm run start`
 
-### `npm run dev` or `npm run watch`
+Use `npm run start` for on–the–fly updates of your code (templates, js, css)...
 
-Use `npm run dev` or `npm run watch` for on–the–fly updates of your code (templates, js, css)...
+### `npm run build`
 
-### `npm run prod`
-
-This will create a `dist` directory for project. **This directory represents distribution package** to zip and install on your WordPress site. 
-
-## Directory Structure
-
-Plese keep in mind that `dist` directory is rebuilt with each `npm dev`, `npm watch` or `npm prod` command.
-
-	dist/ [generated via webpack]
-	src/
-	├── languages/ [translation files]
-	├── src/ [images, stylesheets]
-	├────── WPCOTool/ [Namespace root]
-	├──────── Admin/
-	├──────── assets/ [images, stylesheets]
-	├──────── Frontend/
-	├── contributor-orientation-tool.php [WordPress plugin main file]
-	└── README.txt [WordPress plugin readme file]
-	.babelrc
-	.editorconfig
-	.eslintrc
-	.gitignore
-	.stylelintrc
-	LICENSE
-	package.json
-	README.md
-	webpack.config.js
+This will create production ready (minified) verions of the assets in the `build` directory.
 
 ## Workflow
 
@@ -57,19 +31,18 @@ Workflow for adding new features is as follows:
 
 ## Local Development environment setup
 
-For local development please use [VVV](https://github.com/Varying-Vagrant-Vagrants/VVV) or Docker
+For local development use [VVV](https://github.com/Varying-Vagrant-Vagrants/VVV), Docker, [wp-env](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-env/) or any other local development environment you prefer.
 
 * Clone repository outside your WordPress installation plugins folder
-* Sync dist/contributor-orientation-tool to your instalation wp-content/plugins folder
-* Run npm run watch to start development
-* Note: Don't make changes to dist folder as it is regenerated on every compile
+* Run `npm run start` to start development
+* Note: Don't make changes to `build` folder as it is regenerated on every compile
 
 ## Changing plugin version
 
 Please note: If changing version of the plugin you need to modify version in this files:
-* src/README.txt (also add update description at the end of file for new version)
-* src/src/WPCOTool/Plugin.php (modify class property: $version)
-* src/contributor-orientation-tool.php (modify plugin header)
+* README.txt (also add update description at the end of file for new version)
+* lib/WPCOTool/Plugin.php (modify class property: $version)
+* contributor-orientation-tool.php (modify plugin header)
 
 ## Plugin options
 

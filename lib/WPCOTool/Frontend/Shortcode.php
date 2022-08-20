@@ -172,7 +172,7 @@ class Shortcode {
 
 		return $this->get_section(
 			sprintf( '%s-section-teams', $this->prefix ),
-			esc_html__( 'Based on your answers, we recommend that you join some of the teams below:', 'contributor-orientation-tool' ),
+			esc_html__( 'Based on your answers, we recommend that you join some of teams below:', 'contributor-orientation-tool' ),
 			implode( '', $fields ),
 			'',
 			$this->get_button( $this->get_back_button_text(), true ),
@@ -494,14 +494,14 @@ class Shortcode {
 
 		wp_enqueue_style(
 			$handle,
-			Plugin::assets_url( 'css/shortcode.css' ),
+			Plugin::assets_url( 'build/style-index.css' ),
 			array(),
 			$this->version
 		);
 
 		wp_enqueue_script(
 			$handle,
-			Plugin::assets_url( 'js/shortcode.js' ),
+			Plugin::assets_url( 'build/index.js' ),
 			array( 'jquery' ),
 			$this->version,
 			true

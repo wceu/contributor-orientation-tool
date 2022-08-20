@@ -1,12 +1,15 @@
 {
-  "extends": [
-    "stylelint-config-standard",
-    "stylelint-config-recommended-scss"
-  ],
+	"extends": "@wordpress/stylelint-config",
+	"customSyntax": "postcss-scss",
   "rules": {
     "no-empty-source": null,
     "number-leading-zero": "always",
 		"indentation": "tab",
-		"no-descending-specificity": null
+		"no-descending-specificity": null,
+		"string-quotes": null,
+		"selector-class-pattern": null,
+		"color-named": null,
+		"rule-empty-line-before": null,
+		"max-line-length": null
   }
 }
