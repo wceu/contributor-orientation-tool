@@ -47,7 +47,7 @@ class Options {
 	 *
 	 * @param string $prefix General prefix for plugin
 	 */
-	public function __construct( string $prefix ) {
+	public function __construct( $prefix ) {
 
 		$this->prefix = $prefix;
 		$this->options_name = sprintf( '%s_enabled_teams', $this->prefix );

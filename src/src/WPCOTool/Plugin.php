@@ -71,7 +71,7 @@ class Plugin {
 	 *
 	 * @param string $file
 	 */
-	public function __construct( string $file ) {
+	public function __construct( $file ) {
 		$this->loaded      = false;
 		$this->plugin_path = plugin_dir_path( $file );
 		$this->plugin_url  = plugin_dir_url( $file );

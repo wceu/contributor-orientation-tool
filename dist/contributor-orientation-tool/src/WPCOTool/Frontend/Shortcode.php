@@ -56,7 +56,7 @@ class Shortcode {
 	 * @param string $version Plugin version
 	 * @param string $prefix General prefix for plugin
 	 */
-	public function __construct( string $version, string $prefix ) {
+	public function __construct( $version, $prefix ) {
 
 		$this->version = sanitize_text_field( $version );
 		$this->prefix = $prefix;

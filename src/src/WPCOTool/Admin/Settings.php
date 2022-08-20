@@ -37,7 +37,7 @@ class Settings {
      *
      * @param string $prefix General prefix for plugin
      */
-    public function __construct( string $prefix ) {
+    public function __construct( $prefix ) {
 
     	$this->prefix = $prefix;
         $this->title = esc_html__( 'Contributor orientation tool', 'contributor-orientation-tool' );

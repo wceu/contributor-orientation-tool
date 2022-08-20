@@ -17,7 +17,7 @@ class QuestionFactory {
 	 *
 	 * @return Question
 	 */
-	public static function create( string $label, array $teams ) {
+	public static function create( $label, array $teams ) {
 
 		return new Question( $label, $teams );
 
